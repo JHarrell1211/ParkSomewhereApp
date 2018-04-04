@@ -1,0 +1,208 @@
+﻿@model ParkSomewhereApp.Models.Park
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Park</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ParkName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ParkName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Address)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Address)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Latitude)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Latitude)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Longitude)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Longitude)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OpenTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OpenTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CloseTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CloseTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Descripton)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Descripton)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Photo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Photo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AvgRating)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AvgRating)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NumberRatings)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NumberRatings)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Restrooms)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Restrooms)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PicnicArea)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PicnicArea)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Grill)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Grill)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Playground)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Playground)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HikingTrail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HikingTrail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PavedTrail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PavedTrail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BasketballCourt)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BasketballCourt)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BaseballDiamond)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BaseballDiamond)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CampGround)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CampGround)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Fishing)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fishing)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Swimming)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Swimming)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FitnessTrail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FitnessTrail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ADAAccessible)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ADAAccessible)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>
