@@ -24,5 +24,6 @@ namespace ParkSomewhereApp.Models
         public string UserID { get; set; }
     
         public virtual Park Park { get; set; }
+        public virtual AspNetUser AspNetUser { get; set; }
     }
 }

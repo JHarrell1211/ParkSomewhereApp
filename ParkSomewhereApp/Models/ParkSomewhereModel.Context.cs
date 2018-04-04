@@ -28,5 +28,11 @@ namespace ParkSomewhereApp.Models
         public virtual DbSet<Park> Parks { get; set; }
         public virtual DbSet<Photo> Photos { get; set; }
         public virtual DbSet<Review> Reviews { get; set; }
+        public virtual DbSet<C__MigrationHistory> C__MigrationHistory { get; set; }
+        public virtual DbSet<AspNetRole> AspNetRoles { get; set; }
+        public virtual DbSet<AspNetUserClaim> AspNetUserClaims { get; set; }
+        public virtual DbSet<AspNetUserLogin> AspNetUserLogins { get; set; }
+        public virtual DbSet<AspNetUser> AspNetUsers { get; set; }
+        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
     }
 }

@@ -4,12 +4,23 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="d974cf7fc8064727a645ac0e72ed9fec" Name="Diagram1" ZoomLevel="72">
+      <Diagram DiagramId="d974cf7fc8064727a645ac0e72ed9fec" Name="Diagram1" ZoomLevel="69">
         <EntityTypeShape EntityType="ParkSomewhereAppModel.Park" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
         <EntityTypeShape EntityType="ParkSomewhereAppModel.Photo" Width="1.5" PointX="3" PointY="1.375" IsExpanded="true" />
         <EntityTypeShape EntityType="ParkSomewhereAppModel.Review" Width="1.5" PointX="3" PointY="4.125" IsExpanded="true" />
         <AssociationConnector Association="ParkSomewhereAppModel.FK_Photo_Park" ManuallyRouted="false" />
         <AssociationConnector Association="ParkSomewhereAppModel.FK_Review_Park" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="ParkSomewhereAppModel.C__MigrationHistory" Width="1.5" PointX="5.375" PointY="6.75" />
+        <EntityTypeShape EntityType="ParkSomewhereAppModel.AspNetRole" Width="1.5" PointX="5.375" PointY="2.5" />
+        <EntityTypeShape EntityType="ParkSomewhereAppModel.AspNetUserClaim" Width="1.5" PointX="9.875" PointY="3.625" />
+        <EntityTypeShape EntityType="ParkSomewhereAppModel.AspNetUserLogin" Width="1.5" PointX="9.875" PointY="1" />
+        <EntityTypeShape EntityType="ParkSomewhereAppModel.AspNetUser" Width="1.5" PointX="7.625" PointY="1.375" />
+        <EntityTypeShape EntityType="ParkSomewhereAppModel.sysdiagram" Width="1.5" PointX="7.375" PointY="6.75" />
+        <AssociationConnector Association="ParkSomewhereAppModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" />
+        <AssociationConnector Association="ParkSomewhereAppModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" />
+        <AssociationConnector Association="ParkSomewhereAppModel.AspNetUserRoles" />
+        <AssociationConnector Association="ParkSomewhereAppModel.FK_Photo_AspNetUsers" />
+        <AssociationConnector Association="ParkSomewhereAppModel.FK_Review_AspNetUsers" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -12,14 +12,13 @@ namespace ParkSomewhereApp.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Photo
+    public partial class AspNetUserClaim
     {
-        public int PhotoID { get; set; }
-        public int ParkID { get; set; }
-        public string Image { get; set; }
-        public string UserID { get; set; }
+        public int Id { get; set; }
+        public string UserId { get; set; }
+        public string ClaimType { get; set; }
+        public string ClaimValue { get; set; }
     
-        public virtual Park Park { get; set; }
         public virtual AspNetUser AspNetUser { get; set; }
     }
 }
