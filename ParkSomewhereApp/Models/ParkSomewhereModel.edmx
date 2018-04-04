@@ -1,0 +1,276 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="ParkSomewhereAppModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Park">
+          <Key>
+            <PropertyRef Name="ParkID" />
+          </Key>
+          <Property Name="ParkID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ParkName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Address" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="Latitude" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Longitude" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="OpenTime" Type="time" Precision="7" Nullable="false" />
+          <Property Name="CloseTime" Type="time" Precision="7" Nullable="false" />
+          <Property Name="Descripton" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="Photo" Type="nvarchar" MaxLength="150" />
+          <Property Name="AvgRating" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="NumberRatings" Type="int" />
+          <Property Name="Restrooms" Type="bit" Nullable="false" />
+          <Property Name="PicnicArea" Type="bit" Nullable="false" />
+          <Property Name="Grill" Type="bit" Nullable="false" />
+          <Property Name="Playground" Type="bit" Nullable="false" />
+          <Property Name="HikingTrail" Type="bit" Nullable="false" />
+          <Property Name="PavedTrail" Type="bit" Nullable="false" />
+          <Property Name="BasketballCourt" Type="bit" Nullable="false" />
+          <Property Name="BaseballDiamond" Type="bit" Nullable="false" />
+          <Property Name="CampGround" Type="bit" Nullable="false" />
+          <Property Name="Fishing" Type="bit" Nullable="false" />
+          <Property Name="Swimming" Type="bit" Nullable="false" />
+          <Property Name="FitnessTrail" Type="bit" Nullable="false" />
+          <Property Name="ADAAccessible" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Photo">
+          <Key>
+            <PropertyRef Name="PhotoID" />
+          </Key>
+          <Property Name="PhotoID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ParkID" Type="int" Nullable="false" />
+          <Property Name="Image" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="UserID" Type="nvarchar" MaxLength="128" />
+        </EntityType>
+        <EntityType Name="Review">
+          <Key>
+            <PropertyRef Name="ReviewID" />
+          </Key>
+          <Property Name="ReviewID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ParkID" Type="int" Nullable="false" />
+          <Property Name="ReviewTitle" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="ReviewComments" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="ReviewTimeStamp" Type="datetime" />
+          <Property Name="Rating" Type="int" />
+          <Property Name="TotalVotes" Type="int" />
+          <Property Name="UserID" Type="nvarchar" MaxLength="128" />
+        </EntityType>
+        <Association Name="FK_Photo_Park">
+          <End Role="Park" Type="Self.Park" Multiplicity="1" />
+          <End Role="Photo" Type="Self.Photo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Park">
+              <PropertyRef Name="ParkID" />
+            </Principal>
+            <Dependent Role="Photo">
+              <PropertyRef Name="ParkID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Review_Park">
+          <End Role="Park" Type="Self.Park" Multiplicity="1" />
+          <End Role="Review" Type="Self.Review" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Park">
+              <PropertyRef Name="ParkID" />
+            </Principal>
+            <Dependent Role="Review">
+              <PropertyRef Name="ParkID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ParkSomewhereAppModelStoreContainer">
+          <EntitySet Name="Park" EntityType="Self.Park" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Photo" EntityType="Self.Photo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Review" EntityType="Self.Review" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Photo_Park" Association="Self.FK_Photo_Park">
+            <End Role="Park" EntitySet="Park" />
+            <End Role="Photo" EntitySet="Photo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Review_Park" Association="Self.FK_Review_Park">
+            <End Role="Park" EntitySet="Park" />
+            <End Role="Review" EntitySet="Review" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ParkSomewhereAppModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Park">
+          <Key>
+            <PropertyRef Name="ParkID" />
+          </Key>
+          <Property Name="ParkID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ParkName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Address" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Latitude" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Longitude" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="OpenTime" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="CloseTime" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="Descripton" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Photo" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="AvgRating" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="NumberRatings" Type="Int32" />
+          <Property Name="Restrooms" Type="Boolean" Nullable="false" />
+          <Property Name="PicnicArea" Type="Boolean" Nullable="false" />
+          <Property Name="Grill" Type="Boolean" Nullable="false" />
+          <Property Name="Playground" Type="Boolean" Nullable="false" />
+          <Property Name="HikingTrail" Type="Boolean" Nullable="false" />
+          <Property Name="PavedTrail" Type="Boolean" Nullable="false" />
+          <Property Name="BasketballCourt" Type="Boolean" Nullable="false" />
+          <Property Name="BaseballDiamond" Type="Boolean" Nullable="false" />
+          <Property Name="CampGround" Type="Boolean" Nullable="false" />
+          <Property Name="Fishing" Type="Boolean" Nullable="false" />
+          <Property Name="Swimming" Type="Boolean" Nullable="false" />
+          <Property Name="FitnessTrail" Type="Boolean" Nullable="false" />
+          <Property Name="ADAAccessible" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Photos" Relationship="Self.FK_Photo_Park" FromRole="Park" ToRole="Photo" />
+          <NavigationProperty Name="Reviews" Relationship="Self.FK_Review_Park" FromRole="Park" ToRole="Review" />
+        </EntityType>
+        <EntityType Name="Photo">
+          <Key>
+            <PropertyRef Name="PhotoID" />
+          </Key>
+          <Property Name="PhotoID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ParkID" Type="Int32" Nullable="false" />
+          <Property Name="Image" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Park" Relationship="Self.FK_Photo_Park" FromRole="Photo" ToRole="Park" />
+        </EntityType>
+        <EntityType Name="Review">
+          <Key>
+            <PropertyRef Name="ReviewID" />
+          </Key>
+          <Property Name="ReviewID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ParkID" Type="Int32" Nullable="false" />
+          <Property Name="ReviewTitle" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ReviewComments" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ReviewTimeStamp" Type="DateTime" Precision="3" />
+          <Property Name="Rating" Type="Int32" />
+          <Property Name="TotalVotes" Type="Int32" />
+          <Property Name="UserID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Park" Relationship="Self.FK_Review_Park" FromRole="Review" ToRole="Park" />
+        </EntityType>
+        <Association Name="FK_Photo_Park">
+          <End Role="Park" Type="Self.Park" Multiplicity="1" />
+          <End Role="Photo" Type="Self.Photo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Park">
+              <PropertyRef Name="ParkID" />
+            </Principal>
+            <Dependent Role="Photo">
+              <PropertyRef Name="ParkID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Review_Park">
+          <End Role="Park" Type="Self.Park" Multiplicity="1" />
+          <End Role="Review" Type="Self.Review" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Park">
+              <PropertyRef Name="ParkID" />
+            </Principal>
+            <Dependent Role="Review">
+              <PropertyRef Name="ParkID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ParkSomewhereAppEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Parks" EntityType="Self.Park" />
+          <EntitySet Name="Photos" EntityType="Self.Photo" />
+          <EntitySet Name="Reviews" EntityType="Self.Review" />
+          <AssociationSet Name="FK_Photo_Park" Association="Self.FK_Photo_Park">
+            <End Role="Park" EntitySet="Parks" />
+            <End Role="Photo" EntitySet="Photos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Review_Park" Association="Self.FK_Review_Park">
+            <End Role="Park" EntitySet="Parks" />
+            <End Role="Review" EntitySet="Reviews" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ParkSomewhereAppModelStoreContainer" CdmEntityContainer="ParkSomewhereAppEntities">
+          <EntitySetMapping Name="Parks">
+            <EntityTypeMapping TypeName="ParkSomewhereAppModel.Park">
+              <MappingFragment StoreEntitySet="Park">
+                <ScalarProperty Name="ParkID" ColumnName="ParkID" />
+                <ScalarProperty Name="ParkName" ColumnName="ParkName" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+                <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+                <ScalarProperty Name="OpenTime" ColumnName="OpenTime" />
+                <ScalarProperty Name="CloseTime" ColumnName="CloseTime" />
+                <ScalarProperty Name="Descripton" ColumnName="Descripton" />
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+                <ScalarProperty Name="AvgRating" ColumnName="AvgRating" />
+                <ScalarProperty Name="NumberRatings" ColumnName="NumberRatings" />
+                <ScalarProperty Name="Restrooms" ColumnName="Restrooms" />
+                <ScalarProperty Name="PicnicArea" ColumnName="PicnicArea" />
+                <ScalarProperty Name="Grill" ColumnName="Grill" />
+                <ScalarProperty Name="Playground" ColumnName="Playground" />
+                <ScalarProperty Name="HikingTrail" ColumnName="HikingTrail" />
+                <ScalarProperty Name="PavedTrail" ColumnName="PavedTrail" />
+                <ScalarProperty Name="BasketballCourt" ColumnName="BasketballCourt" />
+                <ScalarProperty Name="BaseballDiamond" ColumnName="BaseballDiamond" />
+                <ScalarProperty Name="CampGround" ColumnName="CampGround" />
+                <ScalarProperty Name="Fishing" ColumnName="Fishing" />
+                <ScalarProperty Name="Swimming" ColumnName="Swimming" />
+                <ScalarProperty Name="FitnessTrail" ColumnName="FitnessTrail" />
+                <ScalarProperty Name="ADAAccessible" ColumnName="ADAAccessible" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Photos">
+            <EntityTypeMapping TypeName="ParkSomewhereAppModel.Photo">
+              <MappingFragment StoreEntitySet="Photo">
+                <ScalarProperty Name="PhotoID" ColumnName="PhotoID" />
+                <ScalarProperty Name="ParkID" ColumnName="ParkID" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Reviews">
+            <EntityTypeMapping TypeName="ParkSomewhereAppModel.Review">
+              <MappingFragment StoreEntitySet="Review">
+                <ScalarProperty Name="ReviewID" ColumnName="ReviewID" />
+                <ScalarProperty Name="ParkID" ColumnName="ParkID" />
+                <ScalarProperty Name="ReviewTitle" ColumnName="ReviewTitle" />
+                <ScalarProperty Name="ReviewComments" ColumnName="ReviewComments" />
+                <ScalarProperty Name="ReviewTimeStamp" ColumnName="ReviewTimeStamp" />
+                <ScalarProperty Name="Rating" ColumnName="Rating" />
+                <ScalarProperty Name="TotalVotes" ColumnName="TotalVotes" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
