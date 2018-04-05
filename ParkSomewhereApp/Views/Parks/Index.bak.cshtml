@@ -15,12 +15,12 @@
     </style>
 </head>
 @*function to place markers on page load*@
-<body onload="markerLatFunction(), markerLongFunction()">
+<body onload="markerLatFunction(), markerLongFunction()" >
     <script>
         //experimenting with ajax sending/getting info
         $.ajax({
             type: 'GET',
-            url: "@Url.Action("markerLatFunction", "Parks")",
+            url: "@Url.Action("markerLatFunction","Parks")",
             data: JSON.stringify(),
             contentType: "applicationJson; charset=utf=8",
             success: function (latitude) { },
@@ -37,34 +37,24 @@
             });
     </script>
 
-
-    //test to make lat array from razor:
-    @*@{string[] latArray = new string[20];
-          string[] longArray = new string[20];
-          string[] nameArray = new string[20];}
-        @foreach (var item in Model)
-        {
-
-        }*@
-    
-    <script type="text/javascript">
-//test to make js array from razor
-    var latArray = [];
-
-    @foreach (var Latitude in Model)
-    {
-        @:latArray.push("@Latitude");
-    }
-
-    alert(latArray);
-
-    </script>
-
-
-
     <h3>My Google Maps Demo</h3>
     <div id="map"></div>
     <script>
+        //function initMap() {
+
+        //    var uluru = { lat: -25.363, lng: 131.044 };
+        //    var map = new google.maps.Map(document.getElementById('map'), {
+        //        zoom: 4,
+        //        center: uluru
+        //    });
+        //    var marker = new google.maps.Marker({
+        //        position: uluru,
+        //        map: map
+        //    });
+
+
+
+
         //map test 1:
         function initMap() {
             //creating map
@@ -78,11 +68,11 @@
             //dropping pin in certain position:
             //for (var i = 0; i < latArr.length; i++){
             var marker = new google.maps.Marker({
-                position: { lat: 41.375517, lng: -81.574519 },
-                //position: { lat: latArr[i], lng: longArr[i] },
-                map: map
-            })
-            // }
+                position: {lat: 41.375517, lng: -81.574519},
+                    //position: { lat: latArr[i], lng: longArr[i] },
+                    map: map
+                })
+           // }
 
             //content in info box
             var contentString = '<div id="content">' +

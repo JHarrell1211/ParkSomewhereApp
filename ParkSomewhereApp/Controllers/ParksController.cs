@@ -125,6 +125,7 @@ namespace ParkSomewhereApp.Controllers
             base.Dispose(disposing);
         }
 
+        //test queries for lat/long
         public JsonResult markerLatFunction()
         {
             string[] latArr = db.Parks.Select(x => x.Latitude).ToArray();
