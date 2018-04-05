@@ -14,104 +14,92 @@
         }
     </style>
 </head>
-@*function to place markers on page load*@
-<body onload="markerLatFunction(), markerLongFunction()">
-    <script>
-        //experimenting with ajax sending/getting info
-        $.ajax({
-            type: 'GET',
-            url: "@Url.Action("markerLatFunction", "Parks")",
-            data: JSON.stringify(),
-            contentType: "applicationJson; charset=utf=8",
-            success: function (latitude) { },
-            error: function(){},
-            });
-
-           $.ajax({
-            type: 'GET',
-            url: "@Url.Action("markerLongFunction", "Parks")",
-            data: JSON.stringify(),
-            contentType: "applicationJson; charset=utf=8",
-            success: function (longitude) { },
-            error: function(){},
-            });
-    </script>
 
 
-    //test to make lat array from razor:
-    @*@{string[] latArray = new string[20];
-          string[] longArray = new string[20];
-          string[] nameArray = new string[20];}
-        @foreach (var item in Model)
-        {
+<script type="text/javascript">
+//js arrays made from razor
+        var latArray = [];
+           var longArray = [];
 
-        }*@
-    
-    <script type="text/javascript">
-//test to make js array from razor
-    var latArray = [];
-
-    @foreach (var Latitude in Model)
+    @foreach (var d in Model)
     {
-        @:latArray.push("@Latitude");
+        @:latArray.push("@d.Latitude");
     }
 
-    alert(latArray);
-
-    </script>
 
 
 
-    <h3>My Google Maps Demo</h3>
-    <div id="map"></div>
-    <script>
-        //map test 1:
-        function initMap() {
-            //creating map
-            var map = new google.maps.Map(document.getElementById('map'), {
-                zoom: 9,
-                center: {
-                    lat: 41.375517, lng: -81.574519
-                }
-            });
+    @foreach (var d in Model)
+    {
+        @:longArray.push("@d.Longitude");
+    }
 
-            //dropping pin in certain position:
-            //for (var i = 0; i < latArr.length; i++){
+
+        //alert(longArray);
+
+</script>
+
+
+
+<h3>My Google Maps Demo</h3>
+<div id="map"></div>
+<script>
+    //map test 1:
+    function initMap() {
+        //creating map
+        var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 12,
+            center: { lat: 41.375517, lng: -81.574519 }
+
+
+        });
+
+        //dropping pin in certain position:
+        for (var i = 0; i < latArray.length; i++) {
+            // alert(latArray[i]);
             var marker = new google.maps.Marker({
-                position: { lat: 41.375517, lng: -81.574519 },
-                //position: { lat: latArr[i], lng: longArr[i] },
+                //position: new google.maps.LatLng(latArray[i], longArray[i),
+
+                //position: new google.maps.LatLng(41.375517, -81.574519),
+                position: { lat: parseFloat(latArray[i]), lng: parseFloat(longArray[i]) },
                 map: map
+
             })
-            // }
-
-            //content in info box
-            var contentString = '<div id="content">' +
-                '<div id="siteNotice">' +
-                '</div>' +
-                '<h1 id="firstHeading" class="firstHeading">Park Name</h1>' +
-                '<div id="bodyContent">' +
-                '<p>This is a great park!</p>' +
-                '<p>Link to park details</p>' +
-                '</div>' +
-                '</div>';
-
-            //info window set up
-            var infowindow = new google.maps.InfoWindow({
-                content: contentString
-            });
-
-            //function to call info window onclick
-            marker.addListener('click', function () {
-                infowindow.open(map, marker);
-            });
         }
 
 
 
-    </script>
-    <script async defer
-            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC0NV4Ogr4ug_24trb2h5LEeeY_nD8xeH0&callback=initMap">
-    </script>
+
+
+
+        //content in info box
+        var contentString = '<div id="content">' +
+            '<div id="siteNotice">' +
+            '</div>' +
+            '<h1 id="firstHeading" class="firstHeading">Park Name</h1>' +
+            '<div id="bodyContent">' +
+            '<p>This is a great park!</p>' +
+            '<p>Link to park details</p>' +
+            '</div>' +
+            '</div>';
+
+        //info window set up
+        var infowindow = new google.maps.InfoWindow({
+            content: contentString
+        });
+
+        //function to call info window onclick
+        marker.addListener('click', function () {
+            infowindow.open(map, marker);
+        });
+    }
+
+
+
+</script>
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC0NV4Ogr4ug_24trb2h5LEeeY_nD8xeH0&callback=initMap">
+</script>
 
 
 
@@ -120,164 +108,163 @@
 
 
 
-    <h2>Index</h2>
+<h2>Index</h2>
 
-    <p>
-        @Html.ActionLink("Create New", "Create")
-    </p>
-    <table class="table">
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ParkName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Address)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Latitude)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Longitude)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OpenTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CloseTime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Descripton)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Photo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AvgRating)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NumberRatings)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Restrooms)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PicnicArea)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Grill)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Playground)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HikingTrail)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PavedTrail)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BasketballCourt)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BaseballDiamond)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CampGround)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Fishing)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Swimming)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FitnessTrail)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ADAAccessible)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.ParkName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Address)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Latitude)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Longitude)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.OpenTime)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CloseTime)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Descripton)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Photo)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.AvgRating)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.NumberRatings)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Restrooms)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PicnicArea)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Grill)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Playground)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.HikingTrail)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PavedTrail)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.BasketballCourt)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.BaseballDiamond)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CampGround)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Fishing)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Swimming)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FitnessTrail)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ADAAccessible)
-            </th>
-            <th></th>
+            <td>
+                @Html.DisplayFor(modelItem => item.ParkName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Latitude)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Longitude)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OpenTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CloseTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descripton)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Photo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AvgRating)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NumberRatings)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Restrooms)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PicnicArea)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Grill)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Playground)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HikingTrail)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PavedTrail)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BasketballCourt)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BaseballDiamond)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CampGround)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fishing)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Swimming)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FitnessTrail)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ADAAccessible)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ParkID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.ParkID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ParkID })
+            </td>
         </tr>
+    }
 
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ParkName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Address)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Latitude)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Longitude)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.OpenTime)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.CloseTime)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Descripton)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Photo)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.AvgRating)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.NumberRatings)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Restrooms)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.PicnicArea)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Grill)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Playground)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.HikingTrail)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.PavedTrail)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.BasketballCourt)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.BaseballDiamond)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.CampGround)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Fishing)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Swimming)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.FitnessTrail)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ADAAccessible)
-                </td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.ParkID }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.ParkID }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.ParkID })
-                </td>
-            </tr>
-        }
-
-    </table>
-</body>
+</table>

@@ -125,30 +125,6 @@ namespace ParkSomewhereApp.Controllers
             base.Dispose(disposing);
         }
 
-        //test queries for lat/long
-        public JsonResult markerLatFunction()
-        {
-            string[] latArr = db.Parks.Select(x => x.Latitude).ToArray();
-            var output = JsonConvert.SerializeObject(latArr);
-            return Json(output, JsonRequestBehavior.AllowGet);
-            //when making a qurry first create a varible 
-            //var latQuery =
-            //    from key in db.Parks
-            //    select key.Latitude;
-
-            //foreach (Chat key in messageQuery)
-            //{
-            //    if (key.Message == "Hello")
-            //    {
-            //        key.Message = "Goodbye";
-            //    }
-            //}
-        }
-        public JsonResult markerLongFunction()
-        {
-            string[] longArr = db.Parks.Select(x => x.Longitude).ToArray();
-            var output = JsonConvert.SerializeObject(longArr);
-            return Json(output, JsonRequestBehavior.AllowGet);
-        }
+       
     }
 }
