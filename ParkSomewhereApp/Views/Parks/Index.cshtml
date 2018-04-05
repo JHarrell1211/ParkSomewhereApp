@@ -7,6 +7,7 @@
 
 <!DOCTYPE html>
 <head>
+
     <style>
         #map {
             height: 400px;
@@ -21,6 +22,7 @@
         var latArray = [];
     var longArray = [];
     var parkArray = [];
+    var descArray = [];
 
     @foreach (var d in Model)
     {
@@ -37,7 +39,10 @@
         @:parkArray.push("@d.ParkName");
     }
 
-  
+       @foreach (var d in Model)
+    {
+        @:descArray.push("@d.Descripton");
+    }
 </script>
 
 
@@ -54,25 +59,35 @@
 
 
         });
-
+        var marker, i;
+       //var infowindow = new google.maps.InfoWindow({});
         //dropping pin in certain position:
-        for (var i = 0; i < latArray.length; i++) {
+        for (i = 0; i < latArray.length; i++) {
             // alert(latArray[i]);
-            var marker = new google.maps.Marker({
+            marker = new google.maps.Marker({
                 position: { lat: parseFloat(latArray[i]), lng: parseFloat(longArray[i]) },
-                map: map
+                map: map,
+                title: parkArray[i],
+                //icon: 'images/treeicon.png',
             });
             //info box & content
-                marker.info = new google.maps.InfoWindow({
-                    content: (i + 1) + ": " + parkArray[i]
-                
-                });
+            //google.maps.event.addListener(marker, 'click', function () {
+            //    this.info.open(map, marker);
+            //});
+            //marker.info = new google.maps.InfoWindow({
+            //    content: (i + 1) + ". " + parkArray[i] + ": " + descArray[i]
+
+            //});
+            (function (marker, i) {
+                // add click event
                 google.maps.event.addListener(marker, 'click', function () {
-                    this.info.open(map, marker);
-
-
-
+                    infowindow = new google.maps.InfoWindow({
+                        content: (i + 1) + ". " + parkArray[i] + ": " + descArray[i]
+                    });
+                    infowindow.open(map, marker);
                 });
+            })(marker, i);
+
         }
 
 
@@ -87,28 +102,28 @@
         //    });
         //}
 
-       
-            //content in info box
-            //var contentString = '<div id="content">' +
-            //    '<div id="siteNotice">' +
-            //    '</div>' +
-            //    '<h1 id="firstHeading" class="firstHeading"></h1>' +
-            //    '<div id="bodyContent">' +
-            //    '<p>This is a great park!</p>' +
-            //    '<p>Link to park details</p>' +
-            //    '</div>' +
-            //    '</div>';
 
-            ////info window set up
-            //var infowindow = new google.maps.InfoWindow({
-            //    content: contentString
-            //});
+        //content in info box
+        //var contentString = '<div id="content">' +
+        //    '<div id="siteNotice">' +
+        //    '</div>' +
+        //    '<h1 id="firstHeading" class="firstHeading"></h1>' +
+        //    '<div id="bodyContent">' +
+        //    '<p>This is a great park!</p>' +
+        //    '<p>Link to park details</p>' +
+        //    '</div>' +
+        //    '</div>';
 
-            ////function to call info window onclick
-            //marker.addListener('click', function () {
-            //    infowindow.open(map, marker);
-            //});
-     
+        ////info window set up
+        //var infowindow = new google.maps.InfoWindow({
+        //    content: contentString
+        //});
+
+        ////function to call info window onclick
+        //marker.addListener('click', function () {
+        //    infowindow.open(map, marker);
+        //});
+
     }
 
 
