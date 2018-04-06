@@ -3,29 +3,49 @@
 }
 
 <div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+
+    @*<h2>WeatherJS</h2>
+    <p id="reply"></p>
+    <button>Get Weather</button>
+
+
+
+    <script>
+        $(document).ready(function () {
+            $("button").click(function () {
+
+                $.get("http://api.openweathermap.org/data/2.5/weather?q=Cleveland&APPID=d288119736f6197179f8c8eac3686b3a&UNITS=IMPERIAL", function (response) {
+                    //response
+                    $("#reply").text(response);
+                });
+            });
+        });
+    </script>*@
+
+
+
+
+    @*<h1>ASP.NET</h1>
+        <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
+        <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>*@
 </div>
 
 <div class="row">
     <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+        <a class="weatherwidget-io" href="https://forecast7.com/en/41d50n81d69/cleveland/" data-label_1="CLEVELAND" data-label_2="WEATHER" data-theme="original">CLEVELAND WEATHER</a>
+        <script>
+            !function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0]; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = 'https://weatherwidget.io/js/widget.min.js'; fjs.parentNode.insertBefore(js, fjs); } }(document, 'script', 'weatherwidget-io-js');
+        </script>
     </div>
     <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
+        <div style="width: 210px;"><iframe style="display: block;" src="https://cdnres.willyweather.com/widget/loadView.html?id=85713" width="210" height="228" frameborder="0" scrolling="no"></iframe><a style="z-index: 1;height: 20px;display: block;margin: -20px 0 0 0;position: relative;text-indent: -9999em" href="https://www.willyweather.com/oh/cuyahoga-county/cleveland.html" rel="nofollow">Cleveland OH forecast</a></div>
     </div>
     <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+        <a href="https://www.accuweather.com/en/us/cleveland-oh/44113/weather-forecast/350127" class="aw-widget-legal">
+            <!--
+        By accessing and/or using this code snippet, you agree to AccuWeather’s terms and conditions (in English) which can be found at https://www.accuweather.com/en/free-weather-widgets/terms and AccuWeather’s Privacy Statement (in English) which can be found at https://www.accuweather.com/en/privacy.
+        -->
+        </a><div id="awcc1522862099159" class="aw-widget-current" data-locationkey="350127" data-unit="f" data-language="en-us" data-useip="false" data-uid="awcc1522862099159"></div>
+        <script type="text/javascript" src="https://oap.accuweather.com/launch.js"></script>
     </div>
 </div>
