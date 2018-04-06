@@ -14,6 +14,7 @@ namespace ParkSomewhereApp.Models
     
     public partial class Review
     {
+        public static string ID { get; internal set; }
         public int ReviewID { get; set; }
         public int ParkID { get; set; }
         public string ReviewTitle { get; set; }

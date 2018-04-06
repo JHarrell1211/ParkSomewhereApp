@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using ParkSomewhereApp.Models;
+using Microsoft.AspNet.Identity;
 
 namespace ParkSomewhereApp.Controllers
 {
@@ -53,6 +54,7 @@ namespace ParkSomewhereApp.Controllers
         {
             if (ModelState.IsValid)
             {
+                photo.UserID = User.Identity.GetUserId();
                 db.Photos.Add(photo);
                 db.SaveChanges();
                 return RedirectToAction("Index");
