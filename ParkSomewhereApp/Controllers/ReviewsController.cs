@@ -38,6 +38,7 @@ namespace ParkSomewhereApp.Controllers
         }
 
         // GET: Reviews/Create
+        [Authorize]
         public ActionResult Create()
         {
             ViewBag.ParkID = new SelectList(db.Parks, "ParkID", "ParkName");
@@ -57,7 +58,7 @@ namespace ParkSomewhereApp.Controllers
                 review.UserID = User.Identity.GetUserId();
                 db.Reviews.Add(review);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Create");
             }
 
             ViewBag.ParkID = new SelectList(db.Parks, "ParkID", "ParkName", review.ParkID);
