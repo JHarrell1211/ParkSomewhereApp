@@ -43,6 +43,7 @@
     {
         @:descArray.push("@d.Descripton");
     }
+       
 </script>
 
 
@@ -70,14 +71,7 @@
                 title: parkArray[i],
                 //icon: 'images/treeicon.png',
             });
-            //info box & content
-            //google.maps.event.addListener(marker, 'click', function () {
-            //    this.info.open(map, marker);
-            //});
-            //marker.info = new google.maps.InfoWindow({
-            //    content: (i + 1) + ". " + parkArray[i] + ": " + descArray[i]
-
-            //});
+        
             (function (marker, i) {
                 // add click event
                 google.maps.event.addListener(marker, 'click', function () {
