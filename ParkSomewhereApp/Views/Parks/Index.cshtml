@@ -21,6 +21,7 @@
     var parkArray = [];
     var descArray = [];
     var detArray = [];
+    
 
 
     @foreach (var d in Model)
@@ -54,7 +55,9 @@
             zoom: 12,
             center: { lat: 41.375517, lng: -81.574519 }
         });
+        //creating needed variables
         var marker, i;
+        var infowindow = new google.maps.InfoWindow();
         //dropping pin in certain position:
         for (i = 0; i < latArray.length; i++) {
             marker = new google.maps.Marker({
@@ -64,15 +67,15 @@
                 //icon: 'images/treeicon.png',
             });
             //info box & content
-
+            //var link = 'https://localhost:44344/Parks/Details/' + detArray[i]
+           
             (function (marker, i) {
                 // add click event
+         
                 google.maps.event.addListener(marker, 'click', function () {
-                    infowindow = new google.maps.InfoWindow({
-                        content: (i + 1) + ". " + parkArray[i] + ": " + descArray[i]
-
-
-                    });
+                    infowindow.setContent((i + 1) + ". " + parkArray[i] + ": " + descArray[i]);
+            
+                    
                     infowindow.open(map, marker);
                 });
             })(marker, i);
