@@ -12,77 +12,133 @@
             height: 400px;
             width: 100%;
         }
+
+        #floating-panel {
+            position: absolute;
+            top: 20vh;
+            left: 60%;
+            z-index: 5;
+            background-color: #fff;
+            padding: 5px;
+            border: 1px solid #999;
+            text-align: center;
+            font-family: 'Roboto','sans-serif';
+            line-height: 30px;
+            padding-left: 10px;
+        }
     </style>
 </head>
 <script type="text/javascript">
-//js arrays made from razor
+    //js arrays made from razor
         var latArray = [];
-    var longArray = [];
-    var parkArray = [];
-    var descArray = [];
-    var detArray = [];
-    
+        var longArray = [];
+        var parkArray = [];
+        var descArray = [];
+        var detArray = [];
 
 
-    @foreach (var d in Model)
-    {
-        @:latArray.push("@d.Latitude");
-    }
-    @foreach (var d in Model)
-    {
-        @:longArray.push("@d.Longitude");
-    }
+
         @foreach (var d in Model)
-    {
-        @:parkArray.push("@d.ParkName");
-    }
-       @foreach (var d in Model)
-    {
-        @:descArray.push("@d.Descripton");
-    }
-       @foreach (var d in Model)
-    {
-        @:detArray.push("@d.ParkID");
-    }
+        {
+            @:latArray.push("@d.Latitude");
+        }
+        @foreach (var d in Model)
+        {
+            @:longArray.push("@d.Longitude");
+        }
+            @foreach (var d in Model)
+        {
+            @:parkArray.push("@d.ParkName");
+        }
+           @foreach (var d in Model)
+        {
+            @:descArray.push("@d.Descripton");
+        }
+           @foreach (var d in Model)
+        {
+            @:detArray.push("@d.ParkID");
+        }
 </script>
+
 <h3>My Google Maps Demo</h3>
+
+<div id="floating-panel">
+    <input id="address" type="textbox" value="Bozeman, MT">
+    <input id="submit" type="button" value="Geocode">
+</div>
+
 <div id="map"></div>
+
 <script>
     //Map API:
+
     function initMap() {
         //creating map
         var map = new google.maps.Map(document.getElementById('map'), {
             zoom: 12,
-            center: { lat: 41.375517, lng: -81.574519 }
+            center: { lat: 45.677806, lng: -111.041978 }
         });
-        //creating needed variables
-        var marker, i;
-        var infowindow = new google.maps.InfoWindow();
-        
-        //dropping pin in certain position:
-        for (i = 0; i < latArray.length; i++) {
-            marker = new google.maps.Marker({
-                position: { lat: parseFloat(latArray[i]), lng: parseFloat(longArray[i]) },
-                map: map,
-                title: parkArray[i],
-                //icon: 'images/treeicon.png',
-            });
-            //info box & content
-            //var link = 'https://localhost:44344/Parks/Details/' + detArray[i]
-            //var contentString = '<a href="/Details/1" >The address name</a>';
-            var n = detArray[i];
 
-
-            (function (marker, i) {
-                // add click event
-         
-                google.maps.event.addListener(marker, 'click', function () {
-                    infowindow.setContent((i + 1) + ". " + parkArray[i] + ": " + descArray[i] + '<center><a href="Details/' + detArray[i] + '">Details for this Park</a></center>');
-                    infowindow.open(map, marker);
-                });
-            })(marker, i);
-        }
+        //geocoder:
+        var geocoder = new google.maps.Geocoder();
+        document.getElementById('submit').addEventListener('click', function () {
+            geocodeAddress(geocoder, map);
+        });
     }
+
+    //using geocoder to search, and dropping marker pins based on database lat/long values:
+    function geocodeAddress(geocoder, resultsMap) {
+        var address = document.getElementById('address').value;
+        geocoder.geocode({ 'address': address }, function (results, status) {
+            if (status === 'OK') {
+                var infowindow = new google.maps.InfoWindow();
+                resultsMap.setCenter(results[0].geometry.location);
+                //for loop to add markers from database:
+                for (i = 0; i < latArray.length; i++) {
+                    marker = new google.maps.Marker({
+                        position: { lat: parseFloat(latArray[i]), lng: parseFloat(longArray[i]) },
+                        map: resultsMap,
+                        title: parkArray[i],
+                        //animation: google.maps.Animation.DROP,
+                        //icon: 'images/treeicon.png',
+                    });
+                    //function to open info window on click:
+                    (function (marker, i) {
+                        google.maps.event.addListener(marker, 'click', function () {
+                            infowindow.setContent((i + 1) + ". " + parkArray[i] + ": " + descArray[i] + '<center><a href="Parks/Details/' + detArray[i] + '" target="_blank">Details for this Park</a></center>');
+                            infowindow.open(resultsMap, marker);
+                        });
+                    })(marker, i);
+                }
+            }
+            else {
+                alert('Geocode was not successful for the following reason: ' + status);
+            }
+        });
+    }
+
+        //    //creating needed variables
+        //    var marker, i;
+        //    var infowindow = new google.maps.InfoWindow();
+
+        //    //dropping pin in certain position:
+        //    for (i = 0; i < latArray.length; i++) {
+        //        marker = new google.maps.Marker({
+        //            position: { lat: parseFloat(latArray[i]), lng: parseFloat(longArray[i]) },
+        //            map: map,
+        //            title: parkArray[i],
+        //            //icon: 'images/treeicon.png',
+        //        });
+
+        //        (function (marker, i) {
+        //            // on click event
+        //            google.maps.event.addListener(marker, 'click', function () {
+        //                infowindow.setContent((i + 1) + ". " + parkArray[i] + ": " + descArray[i] + '<center><a href="Details/' + detArray[i] + '">Details for this Park</a></center>');
+        //                infowindow.open(map, marker);
+        //            });
+        //        })(marker, i);
+        //    }
+        //}
 </script>
 <script async defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC0NV4Ogr4ug_24trb2h5LEeeY_nD8xeH0&callback=initMap">
