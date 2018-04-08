@@ -58,6 +58,7 @@
         //creating needed variables
         var marker, i;
         var infowindow = new google.maps.InfoWindow();
+        
         //dropping pin in certain position:
         for (i = 0; i < latArray.length; i++) {
             marker = new google.maps.Marker({
@@ -68,14 +69,15 @@
             });
             //info box & content
             //var link = 'https://localhost:44344/Parks/Details/' + detArray[i]
-           
+            //var contentString = '<a href="/Details/1" >The address name</a>';
+            var n = detArray[i];
+
+
             (function (marker, i) {
                 // add click event
          
                 google.maps.event.addListener(marker, 'click', function () {
-                    infowindow.setContent((i + 1) + ". " + parkArray[i] + ": " + descArray[i]);
-            
-                    
+                    infowindow.setContent((i + 1) + ". " + parkArray[i] + ": " + descArray[i] + '<center><a href="Details/' + detArray[i] + '">Details for this Park</a></center>');
                     infowindow.open(map, marker);
                 });
             })(marker, i);
@@ -85,9 +87,6 @@
 <script async defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC0NV4Ogr4ug_24trb2h5LEeeY_nD8xeH0&callback=initMap">
 </script>
-
-
-
 
 
 
