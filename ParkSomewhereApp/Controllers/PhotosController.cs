@@ -17,7 +17,15 @@ namespace ParkSomewhereApp.Controllers
 
         public ActionResult Index()
         {
+            ViewBag.ParkID = new SelectList(db.Parks, "ParkID", "ParkName");
             var photos = db.Photos.Include(p => p.Park).Include(p => p.AspNetUser);
+            return View(photos.ToList());
+        }
+        [HttpPost]
+        public ActionResult Index(int ParkID)
+        {
+            ViewBag.ParkID = new SelectList(db.Parks, "ParkID", "ParkName");
+            var photos = db.Photos.Include(r => r.Park).Include(r => r.AspNetUser).Where(r => r.ParkID == ParkID).OrderByDescending(r => r.PhotoID);
             return View(photos.ToList());
         }
 
@@ -49,7 +57,7 @@ namespace ParkSomewhereApp.Controllers
             ModelState.Clear();
             ViewBag.ParkID = new SelectList(db.Parks, "ParkID", "ParkName", imageModel.ParkID);
             ViewBag.UserID = new SelectList(db.AspNetUsers, "Id", "Email", imageModel.UserID);
-            return View();
+            return RedirectToAction("Index", "Photos");
 
 
         }

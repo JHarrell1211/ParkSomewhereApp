@@ -23,62 +23,60 @@
     </tr>
 }
 
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.ReviewTitle)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ReviewComments)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ReviewTimeStamp)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Rating)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TotalVotes)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Park.ParkName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.AspNetUser.Email)
-        </th>
-        <th></th>
-    </tr>
 
-    @foreach (var item in Model)
+
+        @foreach (var item in Model)
     {
-        <tr>
-            <td>
+        
+            <p>
                 @Html.DisplayFor(modelItem => item.ReviewTitle)
-            </td>
-            <td>
+            </p>
+            <p>
                 @Html.DisplayFor(modelItem => item.ReviewComments)
-            </td>
-            <td>
+            </p>
+            <p>
                 @Html.DisplayFor(modelItem => item.ReviewTimeStamp)
-            </td>
-            <td>
+            </p>
+            <p>
                 @Html.DisplayFor(modelItem => item.Rating)
-            </td>
-            <td>
+            </p>
+            <p>
                 @Html.DisplayFor(modelItem => item.TotalVotes)
-            </td>
-            <td>
+            </p>
+            <p>
                 @Html.DisplayFor(modelItem => item.Park.ParkName)
-            </td>
-            <td>
+            </p>
+            <p>
                 @Html.DisplayFor(modelItem => item.AspNetUser.Email)
-            </td>
-            <td>
+            </p>
+
+            <p>
                 @Html.ActionLink("Edit", "Edit", new { id = item.ReviewID }) |
                 @Html.ActionLink("Details", "Details", new { id = item.ReviewID }) |
                 @Html.ActionLink("Delete", "Delete", new { id = item.ReviewID })
-            </td>
-        </tr>
-    }
+            </p>
+        
+        
+}
+            <div id="disqus_thread"></div>
 
-</table>
+    
+
+<script>
+
+    /**
+    *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+    * LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+    /*
+    var disqus_config = function () {
+    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function () { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://parksomewhere.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
