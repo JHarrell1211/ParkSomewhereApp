@@ -4,9 +4,11 @@
     ViewBag.Title = "Index";
 }
 
+
 <!DOCTYPE html>
 <head>
     <style>
+
 
         #map {
             height: 400px;
@@ -61,12 +63,19 @@
 </script>
 
 <h3>My Google Maps Demo</h3>
+<<<<<<< HEAD
 
 <div id="floating-panel">
     <input id="address" type="textbox" value="Enter city or zip code">
     <input id="submit" type="button" value="Search">
 </div>
 
+=======
+<div id="floating-panel">
+    <input id="address" type="textbox" placeholder="City or Zipcode">
+    <input id="submit" type="button" value="Search">
+</div>
+>>>>>>> 6303d976f643b87ad0c879398d2ed1a4a7739e8e
 <div id="map"></div>
 
 <script>
@@ -105,7 +114,11 @@
                     //function to open info window on click:
                     (function (marker, i) {
                         google.maps.event.addListener(marker, 'click', function () {
+<<<<<<< HEAD
                             infowindow.setContent((i + 1) + ". " + parkArray[i] + ": " + descArray[i] + '<center><a href="Parks/Details/' + detArray[i] + '" target="_blank">Details for this Park</a></center>');
+=======
+                            infowindow.setContent((i + 1) + ". " + parkArray[i] + ": " + descArray[i] + '<center><a href="Details/' + detArray[i] + '" target="_blank">Details for this Park</a></center>');
+>>>>>>> 6303d976f643b87ad0c879398d2ed1a4a7739e8e
                             infowindow.open(resultsMap, marker);
                         });
                     })(marker, i);
@@ -121,10 +134,6 @@
 <script async defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC0NV4Ogr4ug_24trb2h5LEeeY_nD8xeH0&callback=initMap">
 </script>
-
-
-
-
 
 
 <p>

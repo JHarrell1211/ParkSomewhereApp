@@ -11,7 +11,8 @@ namespace ParkSomewhereApp.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.Web;
+
     public partial class Photo
     {
         public int PhotoID { get; set; }
@@ -21,5 +22,7 @@ namespace ParkSomewhereApp.Models
     
         public virtual Park Park { get; set; }
         public virtual AspNetUser AspNetUser { get; set; }
+
+        public HttpPostedFileBase ImageFile { get; set; }
     }
 }

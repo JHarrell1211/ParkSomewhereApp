@@ -23,8 +23,6 @@ namespace ParkSomewhereApp.Controllers
                 .ThenBy(r => r.Rating).ToList();
             return View(reviews.ToList());
 
-        }
-
         [HttpPost]
         public ActionResult Index(int ParkID)
         {
@@ -50,6 +48,7 @@ namespace ParkSomewhereApp.Controllers
         }
 
         // GET: Reviews/Create
+        [Authorize]
         public ActionResult Create()
         {
             ViewBag.ParkID = new SelectList(db.Parks, "ParkID", "ParkName");
