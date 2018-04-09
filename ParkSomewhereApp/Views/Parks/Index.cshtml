@@ -10,13 +10,13 @@
 
         #map {
             height: 400px;
-            width: 100%;
+            width: 80%;
         }
 
         #floating-panel {
             position: absolute;
             top: 20vh;
-            left: 60%;
+            left: 80%;
             z-index: 5;
             background-color: #fff;
             padding: 5px;
@@ -63,8 +63,8 @@
 <h3>My Google Maps Demo</h3>
 
 <div id="floating-panel">
-    <input id="address" type="textbox" value="Bozeman, MT">
-    <input id="submit" type="button" value="Geocode">
+    <input id="address" type="textbox" placeholder="City or Zipcode" >
+    <input id="submit" type="button" value="Search">
 </div>
 
 <div id="map"></div>
@@ -75,7 +75,7 @@
     function initMap() {
         //creating map
         var map = new google.maps.Map(document.getElementById('map'), {
-            zoom: 12,
+            zoom: 11,
             center: { lat: 45.677806, lng: -111.041978 }
         });
 
@@ -105,7 +105,7 @@
                     //function to open info window on click:
                     (function (marker, i) {
                         google.maps.event.addListener(marker, 'click', function () {
-                            infowindow.setContent((i + 1) + ". " + parkArray[i] + ": " + descArray[i] + '<center><a href="Parks/Details/' + detArray[i] + '" target="_blank">Details for this Park</a></center>');
+                            infowindow.setContent((i + 1) + ". " + parkArray[i] + ": " + descArray[i] + '<center><a href="Details/' + detArray[i] + '" target="_blank">Details for this Park</a></center>');
                             infowindow.open(resultsMap, marker);
                         });
                     })(marker, i);
@@ -117,28 +117,6 @@
         });
     }
 
-        //    //creating needed variables
-        //    var marker, i;
-        //    var infowindow = new google.maps.InfoWindow();
-
-        //    //dropping pin in certain position:
-        //    for (i = 0; i < latArray.length; i++) {
-        //        marker = new google.maps.Marker({
-        //            position: { lat: parseFloat(latArray[i]), lng: parseFloat(longArray[i]) },
-        //            map: map,
-        //            title: parkArray[i],
-        //            //icon: 'images/treeicon.png',
-        //        });
-
-        //        (function (marker, i) {
-        //            // on click event
-        //            google.maps.event.addListener(marker, 'click', function () {
-        //                infowindow.setContent((i + 1) + ". " + parkArray[i] + ": " + descArray[i] + '<center><a href="Details/' + detArray[i] + '">Details for this Park</a></center>');
-        //                infowindow.open(map, marker);
-        //            });
-        //        })(marker, i);
-        //    }
-        //}
 </script>
 <script async defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC0NV4Ogr4ug_24trb2h5LEeeY_nD8xeH0&callback=initMap">
