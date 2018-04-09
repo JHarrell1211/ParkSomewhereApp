@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using ParkSomewhereApp.Models;
+using Microsoft.AspNet.Identity;
 
 namespace ParkSomewhereApp.Controllers
 {
@@ -17,7 +18,17 @@ namespace ParkSomewhereApp.Controllers
         // GET: Reviews
         public ActionResult Index()
         {
-            var reviews = db.Reviews.Include(r => r.Park).Include(r => r.AspNetUser);
+            ViewBag.ParkID = new SelectList(db.Parks, "ParkID", "ParkName");
+            var reviews = db.Reviews.Include(r => r.Park).Include(r => r.AspNetUser).OrderByDescending(r => r.ReviewTimeStamp)
+                .ThenBy(r => r.Rating).ToList();
+            return View(reviews.ToList());
+        }
+        [HttpPost]
+        public ActionResult Index(int ParkID)
+        {
+            ViewBag.ParkID = new SelectList(db.Parks, "ParkID", "ParkName");
+            var reviews = db.Reviews.Include(r => r.Park).Include(r => r.AspNetUser).Where(r => r.ParkID == ParkID).OrderByDescending(r => r.ReviewTimeStamp)
+                .ThenBy(r => r.Rating).ToList();
             return View(reviews.ToList());
         }
 
@@ -37,6 +48,7 @@ namespace ParkSomewhereApp.Controllers
         }
 
         // GET: Reviews/Create
+        [Authorize]
         public ActionResult Create()
         {
             ViewBag.ParkID = new SelectList(db.Parks, "ParkID", "ParkName");
@@ -53,6 +65,7 @@ namespace ParkSomewhereApp.Controllers
         {
             if (ModelState.IsValid)
             {
+                review.UserID = User.Identity.GetUserId();
                 db.Reviews.Add(review);
                 db.SaveChanges();
                 return RedirectToAction("Index");

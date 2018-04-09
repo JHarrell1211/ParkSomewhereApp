@@ -6,11 +6,13 @@
 @if (ViewBag.displayMenu == "Yes")
 {
     <h1>Welcome Admin. Now you can create user Role.</h1>
-    <h3>
+    
         <li>@Html.ActionLink("Manage Role", "Create", "Parks")</li>
-    </h3>
+   
 }
 else
 {
     <h2>  Welcome <strong>@ViewBag.Name</strong> :) .We will add user module soon </h2>
+    <li>@Html.ActionLink("Add Photo", "Add", "Photos")</li>
+    <li>@Html.ActionLink("Write Review", "Create", "Reviews")</li>
 }

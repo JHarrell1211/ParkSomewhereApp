@@ -343,20 +343,18 @@
     <Content Include="Views\Parks\Details.cshtml" />
     <Content Include="Views\Parks\Edit.cshtml" />
     <Content Include="Views\Parks\Index.cshtml" />
-    <Content Include="Views\Photos\Create.cshtml" />
-    <Content Include="Views\Photos\Delete.cshtml" />
-    <Content Include="Views\Photos\Details.cshtml" />
-    <Content Include="Views\Photos\Edit.cshtml" />
-    <Content Include="Views\Photos\Index.cshtml" />
     <Content Include="Views\Reviews\Create.cshtml" />
     <Content Include="Views\Reviews\Delete.cshtml" />
     <Content Include="Views\Reviews\Details.cshtml" />
     <Content Include="Views\Reviews\Edit.cshtml" />
     <Content Include="Views\Reviews\Index.cshtml" />
     <Content Include="Views\users\Index.cshtml" />
+    <Content Include="Views\Photos\Add.cshtml" />
+    <Content Include="Views\Photos\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Images\" />
     <Folder Include="Views\Roles\" />
   </ItemGroup>
   <ItemGroup>
