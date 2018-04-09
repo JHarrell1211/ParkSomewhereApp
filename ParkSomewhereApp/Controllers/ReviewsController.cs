@@ -18,7 +18,19 @@ namespace ParkSomewhereApp.Controllers
         // GET: Reviews
         public ActionResult Index()
         {
-            var reviews = db.Reviews.Include(r => r.Park).Include(r => r.AspNetUser);
+            ViewBag.ParkID = new SelectList(db.Parks, "ParkID", "ParkName");
+            var reviews = db.Reviews.Include(r => r.Park).Include(r => r.AspNetUser).OrderByDescending(r => r.ReviewTimeStamp)
+                .ThenBy(r => r.Rating).ToList();
+            return View(reviews.ToList());
+
+        }
+
+        [HttpPost]
+        public ActionResult Index(int ParkID)
+        {
+            ViewBag.ParkID = new SelectList(db.Parks, "ParkID", "ParkName");
+            var reviews = db.Reviews.Include(r => r.Park).Include(r => r.AspNetUser).Where(r => r.ParkID == ParkID).OrderByDescending(r => r.ReviewTimeStamp)
+                .ThenBy(r => r.Rating).ToList();
             return View(reviews.ToList());
         }
 
