@@ -1,0 +1,12 @@
+﻿@using (Html.BeginForm())
+    {
+        <tr>
+            <th>
+                @Html.DropDownList("ParkID", null, htmlAttributes: new { @class = "form-control" })
+            </th>
+            <th>
+                <input type="submit" value="Search" class="btn btn-default" />
+            </th>
+
+        </tr>
+    }

@@ -1,18 +1,42 @@
 ﻿@model IEnumerable<ParkSomewhereApp.Models.Photo>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Photos";
 }
 
 <h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Create New", "Add")
 </p>
+<p>
+    @Html.ActionLink("Index", "Photos");
+</p>
+
+<script >function refreshPage(){
+   window.location.reload();
+}</script>
+
+@*@using (Html.BeginForm())
+    {
+        <tr>
+            <th>
+                @Html.DropDownList("ParkID", null, htmlAttributes: new { @class = "form-control" })
+            </th>
+            <th>
+                <input type="submit" value="Search" class="btn btn-default" />
+            </th>
+
+        </tr>
+    }*@
+@{
+    Html.RenderPartial("PartialPhoto", ViewData.Model);
+}
+
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.ParkID)
+            @Html.DisplayNameFor(model => model.Park.ParkName)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Image)
@@ -23,23 +47,24 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.ParkID)
-        </td>
-        <td>
-            <img src="@Url.Content(item.Image)" height="120" width="120" />
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.AspNetUser.UserName)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.PhotoID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.PhotoID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.PhotoID })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Park.ParkName)
+            </td>
+            <td>
+                <img src="@Url.Content(item.Image)" height="120" width="120" />
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AspNetUser.UserName)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.PhotoID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.PhotoID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.PhotoID })
+            </td>
+        </tr>
+    }
 
 </table>

@@ -20,6 +20,16 @@ namespace ParkSomewhereApp.Controllers
             return View(db.Parks.ToList());
         }
 
+        [HttpGet]
+        public ActionResult MyAction(string Address)
+        {
+            return View(db.Parks.Where(r => r.Address.Contains(Address) || Address == null).ToList());
+            //ViewBag.ParkID = new SelectList(db.Parks, "ParkID", "ParkName");
+            //var address = db.Parks.Where(r => r.Address.Contains(Address)).OrderByDescending(r => r.Address)
+            //    .ThenBy(r => r.ParkName).ToList();
+            //return View(address.ToList());
+        }
+
         // GET: Parks/Details/5
         public ActionResult Details(int? id)
         {

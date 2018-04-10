@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using ParkSomewhereApp.Models;
 using Microsoft.AspNet.Identity;
+using Newtonsoft.Json;
 
 namespace ParkSomewhereApp.Controllers
 {
@@ -26,11 +27,37 @@ namespace ParkSomewhereApp.Controllers
         [HttpPost]
         public ActionResult Index(int ParkID)
         {
+            
             ViewBag.ParkID = new SelectList(db.Parks, "ParkID", "ParkName");
             var reviews = db.Reviews.Include(r => r.Park).Include(r => r.AspNetUser).Where(r => r.ParkID == ParkID).OrderByDescending(r => r.ReviewTimeStamp)
                 .ThenBy(r => r.Rating).ToList();
             return View(reviews.ToList());
+
+            
         }
+
+        public JsonResult TestJson()
+        {
+            //This is my original SQL query
+            //SELECT AspNetUsers.UserName,  Chat.Message
+            //from Chat
+            //INNER JOIN AspNetUsers ON Chat.UserId = AspNetUsers.Id
+            //ORDER BY Chat.TimeStamp DESC;
+            //LINQ appears below
+            var reviews = from Reviews in db.Reviews
+                          
+                          orderby
+                           Reviews.ReviewTimeStamp descending
+                          select new
+                          {
+                              Reviews.AspNetUser.UserName,
+                              Reviews.Park.ParkName,
+                              Reviews.ReviewComments
+                          };
+            var output = JsonConvert.SerializeObject(reviews.ToList());
+            return Json(output, JsonRequestBehavior.AllowGet);
+        }
+
 
         // GET: Reviews/Details/5
         public ActionResult Details(int? id)

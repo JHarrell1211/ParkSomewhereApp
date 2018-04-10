@@ -10,6 +10,16 @@
     @Html.ActionLink("Create New", "Create")
 </p>
 
+<p>
+    @Html.ActionLink("All Reviews", "Index")
+</p>
+
+@*<div>
+    <button id="getreviews" class="btn btn-primary">Reviews</button>
+</div>
+<div id="allChats" class="chat-list">
+</div>*@
+
 @using (Html.BeginForm())
 {
     <tr>
@@ -22,6 +32,49 @@
 
     </tr>
 }
+
+@section Scripts {
+    <script>
+        //update the chats area when the get chats button is clicked
+            $('#getreviews').click(displayChats);
+            //Display chats on page load and then refresh every 10 seconds
+            //window.onload = function () {
+            //    displayChats(); //loads chats on page load -- not a project requirement, but seems to make sense
+            //    setInterval(displayChats, 10000); //runs displayChats function every 10 seconds
+            //}
+            //display chats function that will be reused several times in script.
+            function displayChats() {
+                $.get("@Url.Action("TestJson","Reviews")", function (serverResponse) {
+                    var jsonTest = JSON.parse(serverResponse);
+                    console.log(jsonTest);
+                    //grab area to append to
+                    var chatsList = $("#allChats");
+                    //Reset the chats area by using the empty method -- no duplicates
+                    chatsList.empty();
+                    $.each(jsonTest, function (inx, val) {
+                        //create html elements to hold the values
+                        var chatContainer = $("<div class='chat-container'>");
+                        var user = $("<p class='username'>");
+                        var park = $("<p class='park'>");
+                        var message = $("<p>");
+                        // assign text of user and message for each chat to an html element
+                        user.text(val.UserName);
+                        park.text(val.ParkName);
+                        message.text(val.ReviewComments);
+                        //append user and message into the chatContainer
+                        chatContainer.append(park);
+                        chatContainer.append(user);
+                        chatContainer.append(message);
+
+                        //append chatContainer to #chatsList
+                        chatsList.append(chatContainer);
+                    });
+                })
+            }
+
+    </script>
+}
+
 
 <table class="table">
     <tr>
@@ -79,6 +132,7 @@
                 @Html.ActionLink("Delete", "Delete", new { id = item.ReviewID })
             </td>
         </tr>
+    }
 
 </table>
 
