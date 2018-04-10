@@ -63,14 +63,14 @@
 </script>
 <h3>My Google Maps Demo</h3>
 
-@using (Html.BeginForm("Index","Parks", FormMethod.Get))
+@using (Html.BeginForm("Index", "Parks", FormMethod.Get))
 {
-<div id="floating-panel">
-    <input id="address" type="text" placeholder="City or Zipcode">
-    <input id="submit" type="button" class="address" value="Search">
-    
-    @*@Html.TextBox("address")<input id="address" type="submit" value="Search">*@
-</div>
+    <div id="floating-panel">
+        @*<input id="address" type="text" placeholder="City or Zipcode">
+        <input id="submit" type="button" class="address" value="Search">*@
+
+        @Html.TextBox("address")<input id="address" type="submit" value="Search">
+    </div>
 }
 <div id="map"></div>
 <script>
@@ -109,7 +109,7 @@
                     //function to open info window on click:
                     (function (marker, i) {
                         google.maps.event.addListener(marker, 'click', function () {
-                            infowindow.setContent((i + 1) + ". " + parkArray[i] + ": " + descArray[i] + '<center><a href="Details/' + detArray[i] + '" target="_blank">Details for this Park</a></center>');
+                            infowindow.setContent(parkArray[i] + ": " + descArray[i] + '<center><a href="Details/' + detArray[i] + '" target="_blank">Details for this Park</a></center>');
                             infowindow.open(resultsMap, marker);
                         });
                     })(marker, i);
@@ -125,6 +125,10 @@
 <script async defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC0NV4Ogr4ug_24trb2h5LEeeY_nD8xeH0&callback=initMap">
 </script>
+
+<div class="col-md-4">
+    <div style="width: 210px;"><iframe style="display: block;" src="https://cdnres.willyweather.com/widget/loadView.html?id=85713" width="210" height="228" frameborder="0" scrolling="no"></iframe><a style="z-index: 1;height: 20px;display: block;margin: -20px 0 0 0;position: relative;text-indent: -9999em" href="https://www.willyweather.com/oh/cuyahoga-county/cleveland.html" rel="nofollow">Cleveland OH forecast</a></div>
+</div>
 
 
 <p>

@@ -356,6 +356,7 @@
     <Content Include="Views\Photos\Add.cshtml" />
     <Content Include="Views\Photos\Index.cshtml" />
     <Content Include="Views\Photos\PartialPhoto.cshtml" />
+    <Content Include="Views\Photos\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

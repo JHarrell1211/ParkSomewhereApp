@@ -7,6 +7,7 @@ using System.Data.Entity;
 using System.Web;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
+using ParkSomewhereApp.Models;
 
 namespace ParkSomewhereApp.Controllers
 {
@@ -61,6 +62,32 @@ namespace ParkSomewhereApp.Controllers
             return RedirectToAction("Index", "Photos");
 
 
+        }
+
+        // GET: Reviews/Delete/5
+       public ActionResult Delete(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Photo photo = db.Photos.Find(id);
+            if (photo == null)
+            {
+                return HttpNotFound();
+            }
+            return View(photo);
+        }
+
+        // POST: Reviews/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(int id)
+        {
+            Photo photo = db.Photos.Find(id);
+            db.Photos.Remove(photo);
+            db.SaveChanges();
+            return RedirectToAction("Index");
         }
 
 
