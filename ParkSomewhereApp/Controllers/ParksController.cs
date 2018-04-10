@@ -32,6 +32,25 @@ namespace ParkSomewhereApp.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.ParkID = id.Value;
+
+            var comments = db.Reviews.Where(d => d.ParkID.Equals(id.Value)).ToList();
+            ViewBag.ReviewComments = comments;
+
+            var ratings = db.Reviews.Where(d => d.ParkID.Equals(id.Value)).ToList();
+            if (ratings.Count() > 0)
+            {
+                var ratingSum = ratings.Sum(d => d.Rating.Value);
+                ViewBag.RatingSum = ratingSum;
+                var ratingCount = ratings.Count();
+                ViewBag.RatingCount = ratingCount;
+            }
+            else
+            {
+                ViewBag.RatingSum = 0;
+                ViewBag.RatingCount = 0;
+            }
+
             return View(park);
         }
 

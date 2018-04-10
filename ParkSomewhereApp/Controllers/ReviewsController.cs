@@ -65,10 +65,11 @@ namespace ParkSomewhereApp.Controllers
         {
             if (ModelState.IsValid)
             {
+                review.ReviewTimeStamp = DateTime.Now;
                 review.UserID = User.Identity.GetUserId();
                 db.Reviews.Add(review);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Parks");
             }
 
             ViewBag.ParkID = new SelectList(db.Parks, "ParkID", "ParkName", review.ParkID);
