@@ -10,27 +10,20 @@
     @Html.ActionLink("Create New", "Add")
 </p>
 <p>
-    @Html.ActionLink("All Photos", "Index");
+    @Html.ActionLink("View All Photos", "Index")
 </p>
 
-<script >function refreshPage(){
-   window.location.reload();
-}</script>
+@using (Html.BeginForm())
+{
+    <tr>
+        <th>
+            @Html.DropDownList("ParkID", null, htmlAttributes: new { @class = "form-control" })
+        </th>
+        <th>
+            <input type="submit" value="Search" class="btn btn-default" />
+        </th>
+    </tr>
 
-@*@using (Html.BeginForm())
-    {
-        <tr>
-            <th>
-                @Html.DropDownList("ParkID", null, htmlAttributes: new { @class = "form-control" })
-            </th>
-            <th>
-                <input type="submit" value="Search" class="btn btn-default" />
-            </th>
-
-        </tr>
-    }*@
-@{
-    Html.RenderPartial("PartialPhoto", ViewData.Model);
 }
 
 <table class="table">
@@ -51,7 +44,11 @@
     {
         <tr>
             <td>
+
                 @Html.DisplayFor(modelItem => item.Park.ParkName)
+
+                @Html.DisplayFor(modelItem => item.ParkID)
+
             </td>
             <td>
                 <img src="@Url.Content(item.Image)" height="120" width="120" />

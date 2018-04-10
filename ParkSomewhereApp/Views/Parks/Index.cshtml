@@ -37,7 +37,7 @@
         var parkArray = [];
         var descArray = [];
         var detArray = [];
-
+        var userArray = [];
 
 
         @foreach (var d in Model)
@@ -66,10 +66,10 @@
 @using (Html.BeginForm("Index", "Parks", FormMethod.Get))
 {
     <div id="floating-panel">
-        @*<input id="address" type="text" placeholder="City or Zipcode">
-        <input id="submit" type="button" class="address" value="Search">*@
+        <input id="address" type="text" placeholder="City or Zipcode">
+        <input id="submit" type="button" class="address" value="Search">
 
-        @Html.TextBox("address")<input id="address" type="submit" value="Search">
+        @*@Html.TextBox("address")<input id="address" type="submit" value="Search">*@
     </div>
 }
 <div id="map"></div>
@@ -109,7 +109,11 @@
                     //function to open info window on click:
                     (function (marker, i) {
                         google.maps.event.addListener(marker, 'click', function () {
+
                             infowindow.setContent(parkArray[i] + ": " + descArray[i] + '<center><a href="Details/' + detArray[i] + '" target="_blank">Details for this Park</a></center>');
+
+                            infowindow.setContent(parkArray[i] + ": " + descArray[i] + '<center><a href="Parks/Details/' + detArray[i] + '" target="_blank">Details for this Park</a></center>');
+
                             infowindow.open(resultsMap, marker);
                         });
                     })(marker, i);
@@ -121,6 +125,13 @@
         });
     }
 
+    //+ '< center > <a class="btn btn-primary" onclick="compare(detArray[i])">Click to Compare this Park</a></center >'
+    //function compare(parkNum) {
+    //    userArray.push(parkNum)
+    //    alert(userArray);
+    //}
+
+
 </script>
 <script async defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC0NV4Ogr4ug_24trb2h5LEeeY_nD8xeH0&callback=initMap">
@@ -130,6 +141,10 @@
     <div style="width: 210px;"><iframe style="display: block;" src="https://cdnres.willyweather.com/widget/loadView.html?id=85713" width="210" height="228" frameborder="0" scrolling="no"></iframe><a style="z-index: 1;height: 20px;display: block;margin: -20px 0 0 0;position: relative;text-indent: -9999em" href="https://www.willyweather.com/oh/cuyahoga-county/cleveland.html" rel="nofollow">Cleveland OH forecast</a></div>
 </div>
 
+
+<div class="col-md-4">
+    <div style="width: 210px;"><iframe style="display: block;" src="https://cdnres.willyweather.com/widget/loadView.html?id=85713" width="210" height="228" frameborder="0" scrolling="no"></iframe><a style="z-index: 1;height: 20px;display: block;margin: -20px 0 0 0;position: relative;text-indent: -9999em" href="https://www.willyweather.com/oh/cuyahoga-county/cleveland.html" rel="nofollow">Cleveland OH forecast</a></div>
+</div>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -210,6 +225,8 @@
 
     @foreach (var item in Model)
     {
+        @*@if (item.Address == document.getElementById("address").value)
+            {*@
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.ParkName)
@@ -286,6 +303,7 @@
                 @Html.ActionLink("Delete", "Delete", new { id = item.ParkID })
             </td>
         </tr>
+        @*}*@
     }
 
 </table>
