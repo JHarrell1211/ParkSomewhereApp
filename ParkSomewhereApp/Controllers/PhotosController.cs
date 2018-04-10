@@ -29,6 +29,7 @@ namespace ParkSomewhereApp.Controllers
             return View(photos.ToList());
         }
 
+
         // GET: Photos
         [HttpGet] [Authorize]
         public ActionResult Add()
