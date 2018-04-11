@@ -1,6 +1,6 @@
 ﻿body {
     background-image: url('images/parksbg.jpg');
-
+  
     background-attachment: fixed;
 }
 
@@ -14,7 +14,7 @@
 
 #map {
     height: 80vh;
-    border: 3px solid #135e46;
+    /*border: 3px solid #135e46;*/
     width: 100%;
 }
 
@@ -50,9 +50,11 @@ h4 {
         font-family: 'Acme', sans-serif;
         font-size: 2rem;
         color: #135e46;
+        text-align:center;
     }
-h3#header{
-    margin-top: 5vh;
+h3#header {
+    margin-top: 10vh;
+    text-align: center;
 }
 
 
@@ -73,5 +75,18 @@ div.parkdiv{
     border-color: white;
     margin-top: 3vh;
     border-width: 3px;
-    height: 100vh;
+    height: 80vh;
+}
+
+div#divider {
+    background-image: url('images/user2.jpeg');
+    background-size:cover;
+    height: 20vh;
+    width: 100%;
+
+
+}
+
+div.parks{
+    background-color: aqua;
 }

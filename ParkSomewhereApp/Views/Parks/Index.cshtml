@@ -10,7 +10,8 @@
 
 </head>
 <body onload="Hide()">
-    <script type="text/javascript">
+    <div class="container-fluid">
+        <script type="text/javascript">
     //js arrays made from razor
         var latArray = [];
         var longArray = [];
@@ -40,129 +41,132 @@
         {
             @:detArray.push("@d.ParkID");
         }
-    </script>
-
-    <div class="row">
-        @*title*@
-        <h3>Search for Parks Near You</h3>
-    </div>
-
-    <div class="row">
-
-        <div class="col-md-9 col-sm-12">
-            @*map object*@
-            <div id="map"></div>
+        </script>
+       
+        <div class="row">
+            @*title*@
+            <h3>Search for Parks Near You</h3>
         </div>
 
-        <div class="col-md-3 col-sm-12">
-            @*google search box*@
-            <div id="floating-panel">
-                <input id="address" type="textbox" placeholder="City or Zipcode" onfocus="colorChange(this)" onblur="colorNormal(this)">
-                <input id="submit" onclick="Hide()" type="button" value="Search">
+        <div class="row">
+
+            <div class="col-md-9 col-sm-12">
+                @*map object*@
+                <div id="map"></div>
             </div>
 
-            @*weather widget*@
-            <div class="col-md-3" id="weather">
-                <div style="width: 210px;"><iframe style="display: block;" src="https://cdnres.willyweather.com/widget/loadView.html?id=85713" width="210" height="228" frameborder="0" scrolling="no"></iframe><a style="z-index: 1;height: 20px;display: block;margin: -20px 0 0 0;position: relative;text-indent: -9999em" href="https://www.willyweather.com/oh/cuyahoga-county/cleveland.html" rel="nofollow">Cleveland OH forecast</a></div>
+            <div class="col-md-3 col-sm-12">
+                @*google search box*@
+                <div id="floating-panel">
+                    <input id="address" type="textbox" placeholder="City or Zipcode" onfocus="colorChange(this)" onblur="colorNormal(this)">
+                    <input id="submit" onclick="Hide()" type="button" value="Search">
+                </div>
+
+                @*weather widget*@
+                <div class="col-md-3" id="weather">
+                    <div style="width: 210px;"><iframe style="display: block;" src="https://cdnres.willyweather.com/widget/loadView.html?id=85713" width="210" height="228" frameborder="0" scrolling="no"></iframe><a style="z-index: 1;height: 20px;display: block;margin: -20px 0 0 0;position: relative;text-indent: -9999em" href="https://www.willyweather.com/oh/cuyahoga-county/cleveland.html" rel="nofollow">Cleveland OH forecast</a></div>
+                </div>
             </div>
         </div>
-    </div>
 
 
 
-    <script>
-        //onload function
-        function Hide() {
-            $(".parkdiv").hide()
-            $("h3#header").hide()
-            //$("tr").hide()
-        }
+        <script>
+            //onload function
+            function Hide() {
+                $(".parkdiv").hide()
+                $("h3#header").hide()
+                $("div#divider").hide()
+                //$("tr").hide()
+            }
 
 
 
-        //function from homework: onfocus/onblur for fields in a form
-        function colorChange(x) {
-            x.style.border = "thin solid #a5db98";
-        }
-        function colorNormal(x) {
-            x.style.border = "thin solid lightgrey";
-        }
+            //function from homework: onfocus/onblur for fields in a form
+            function colorChange(x) {
+                x.style.border = "thin solid #a5db98";
+            }
+            function colorNormal(x) {
+                x.style.border = "thin solid lightgrey";
+            }
 
 
-        //Map API:
+            //Map API:
 
-        function initMap() {
-            //creating map
-            var map = new google.maps.Map(document.getElementById('map'), {
-                zoom: 12,
-                center: { lat: 41.875266, lng: -87.633272 },
-            });
+            function initMap() {
+                //creating map
+                var map = new google.maps.Map(document.getElementById('map'), {
+                    zoom: 12,
+                    center: { lat: 41.875266, lng: -87.633272 },
+                });
 
-            //geocoder:
-            var geocoder = new google.maps.Geocoder();
-            document.getElementById('submit').addEventListener('click', function () {
-                geocodeAddress(geocoder, map);
-            });
-        }
+                //geocoder:
+                var geocoder = new google.maps.Geocoder();
+                document.getElementById('submit').addEventListener('click', function () {
+                    geocodeAddress(geocoder, map);
+                });
+            }
 
-        //using geocoder to search, and dropping marker pins based on database lat/long values:
-        function geocodeAddress(geocoder, resultsMap) {
+            //using geocoder to search, and dropping marker pins based on database lat/long values:
+            function geocodeAddress(geocoder, resultsMap) {
 
-            var address = document.getElementById('address').value;
-            //$(".tr").hide()
-            $("h3#header").show()
-            $(".parkdiv:contains('" + address + "')").show()
-            //$("tr:contains('" + address + "')").show()
-            geocoder.geocode({ 'address': address }, function (results, status) {
-                if (status === 'OK') {
-                    var infowindow = new google.maps.InfoWindow();
-                    resultsMap.setCenter(results[0].geometry.location);
+                var address = document.getElementById('address').value;
+                //$(".tr").hide()
+                $("h3#header").show()
+                $(".parkdiv:contains('" + address + "')").show()
+                //$("tr:contains('" + address + "')").show()
+                geocoder.geocode({ 'address': address }, function (results, status) {
+                    if (status === 'OK') {
+                        var infowindow = new google.maps.InfoWindow();
+                        resultsMap.setCenter(results[0].geometry.location);
 
-                    //for loop to add markers from database:
-                    for (i = 0; i < latArray.length; i++) {
-                        marker = new google.maps.Marker({
-                            position: { lat: parseFloat(latArray[i]), lng: parseFloat(longArray[i]) },
-                            map: resultsMap,
-                            title: parkArray[i],
-                            //animation: google.maps.Animation.DROP,
-                            //icon: 'images/treeicon.png',
-                        });
-                        //function to open info window on click:
-                        (function (marker, i) {
-                            google.maps.event.addListener(marker, 'click', function () {
-                                infowindow.setContent(parkArray[i] + '<center><a href="Details/' + detArray[i] + '" target="_blank">Details for this Park</a></center>');
-                                infowindow.open(resultsMap, marker);
+                        //for loop to add markers from database:
+                        for (i = 0; i < latArray.length; i++) {
+                            marker = new google.maps.Marker({
+                                position: { lat: parseFloat(latArray[i]), lng: parseFloat(longArray[i]) },
+                                map: resultsMap,
+                                title: parkArray[i],
+                                //animation: google.maps.Animation.DROP,
+                                //icon: 'images/treeicon.png',
                             });
-                        })(marker, i);
+                            //function to open info window on click:
+                            (function (marker, i) {
+                                google.maps.event.addListener(marker, 'click', function () {
+                                    infowindow.setContent(parkArray[i] + '<center><a href="Details/' + detArray[i] + '" target="_blank">Details for this Park</a></center>');
+                                    infowindow.open(resultsMap, marker);
+                                });
+                            })(marker, i);
+                        }
                     }
-                }
-                else {
-                    alert('Geocode was not successful for the following reason: ' + status);
-                }
-            });
-        }
+                    else {
+                        alert('Geocode was not successful for the following reason: ' + status);
+                    }
+                });
+            }
 
-    </script>
-    <script async defer
-            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC0NV4Ogr4ug_24trb2h5LEeeY_nD8xeH0&callback=initMap">
-    </script>
-
+        </script>
+        <script async defer
+                src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC0NV4Ogr4ug_24trb2h5LEeeY_nD8xeH0&callback=initMap">
+        </script>
 
 
-    @*<p>
+
+        @*<p>
             @Html.ActionLink("Create New", "Create")
         </p>*@
 
-    <div class="parks">
+        <div class="parks">
 
 
-    </div>
+        </div>
 
-    <div class="parks">
-        <h3 id="header">
-            Parks in Your Area
-        </h3>
-        @foreach (var item in Model)
+
+
+        <div class="parks">
+            <h3 id="header">
+                Parks in Your Area
+            </h3>
+            @foreach (var item in Model)
         {
             <div class="col-md-4 col-sm-8 col-lg-1-xs-12">
                 <div class="parkdiv">
@@ -216,13 +220,13 @@
                             <p>  @Html.DisplayFor(modelItem => item.PavedTrail)</p>
 
                             <h4>
-                                @Html.DisplayNameFor(model => model.BasketballCourt)
+                                @Html.DisplayNameFor(model => model.Fishing)
                             </h4>
-                            <p>  @Html.DisplayFor(modelItem => item.BasketballCourt)</p>
+                            <p>  @Html.DisplayFor(modelItem => item.Fishing)</p>
                             <h4>
-                                @Html.DisplayNameFor(model => model.BaseballDiamond)
+                                @Html.DisplayNameFor(model => model.ADAAccessible)
                             </h4>
-                            <p>  @Html.DisplayFor(modelItem => item.BaseballDiamond)</p>
+                            <p>  @Html.DisplayFor(modelItem => item.ADAAccessible)</p>
 
                         </div>
 
@@ -232,11 +236,11 @@
 
             </div>
 
-        }
-    </div>
+    }
+        </div>
 
 
-    @*<table class="table">
+        @*<table class="table">
                 <tr class="header">
                     <th>
                         @Html.DisplayNameFor(model => model.ParkName)
@@ -394,4 +398,5 @@
 
             </table>
         </div>*@
+    </div>
 </body>
