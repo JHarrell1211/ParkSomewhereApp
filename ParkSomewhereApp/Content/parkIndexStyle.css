@@ -9,10 +9,12 @@
 #weather{
     margin-top: 10vh;
     margin-left: 1vw;
+
 }
 
 #map {
     height: 80vh;
+    border: 3px solid #135e46;
     width: 100%;
 }
 
@@ -37,7 +39,7 @@ h3 {
     color: #135e46;
     margin-left: 5vw;
     font-size: 2.5rem;
-    text-shadow: 1px 1px white;
+    /*text-shadow: 1px 1px white;*/
 }
 h4 {
     font-family: 'Acme', sans-serif;

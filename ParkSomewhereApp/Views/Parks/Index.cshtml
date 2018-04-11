@@ -57,7 +57,7 @@
         <div class="col-md-3 col-sm-12">
             @*google search box*@
             <div id="floating-panel">
-                <input id="address" type="textbox" placeholder="City or Zipcode">
+                <input id="address" type="textbox" placeholder="City or Zipcode" onfocus="colorChange(this)" onblur="colorNormal(this)">
                 <input id="submit" onclick="Hide()" type="button" value="Search">
             </div>
 
@@ -71,12 +71,24 @@
 
 
     <script>
-
+        //onload function
         function Hide() {
             $(".parkdiv").hide()
             $("h3#header").hide()
             //$("tr").hide()
         }
+
+
+
+        //function from homework: onfocus/onblur for fields in a form
+        function colorChange(x) {
+            x.style.border = "thin solid #a5db98";
+        }
+        function colorNormal(x) {
+            x.style.border = "thin solid lightgrey";
+        }
+
+
         //Map API:
 
         function initMap() {
@@ -160,10 +172,10 @@
                             <h4 id="parkName">
                                 @Html.DisplayFor(modelItem => item.ParkName)
                             </h4>
-                      
+
                             <p> @Html.DisplayFor(modelItem => item.Address)</p>
 
-                         
+
                             <p id="desc"> @Html.DisplayFor(modelItem => item.Descripton)</p>
                         </div>
                     </div>
