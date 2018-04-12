@@ -2,10 +2,10 @@
 @{
     ViewBag.Title = "Index";
 }
-
+<link href="~/Content/UserIndexStyle.css" rel="stylesheet" />
 @if (ViewBag.displayMenu == "Yes")
 {
-    <h1>Welcome Admin. Now you can create user Role.</h1>
+    <h1 id="admin-welcome">Welcome Admin. Now you can create user Role.</h1>
     
         <li>@Html.ActionLink("Manage Role", "Create", "Parks")</li>
    

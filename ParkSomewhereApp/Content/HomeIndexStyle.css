@@ -1,0 +1,49 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+    background-color: #a5db98;
+    background-image: url('images/pexels-photo-164005.jpeg');
+    background-size: cover;
+}
+h2#welcome {
+    text-align: center;
+    color: saddlebrown;
+    font-family: 'Acme', sans-serif;
+}
+/*div.jumbotron {
+    padding-top: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+    background-color: #a5db98;
+    margin-top: 50px;
+}*/
+/*div#welcome.col-12{
+    color: white;
+    font-weight:bolder;
+    text-align:center;
+    font-size:x-large;
+}*/
+
+/*div.jumbotron {
+    padding-top: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+background-color: #a5db98; margin-top: 50px;
+}
+*/
+
+h2#welcome {
+    text-align: center;
+    color: #065900;
+    font-family: 'Acme', sans-serif;
+}
+
+.carousel-caption {
+    top: 0;
+    bottom: auto;
+    color:black;
+    text-shadow: 2px 2px grey;
+    font-size: large;
+}
