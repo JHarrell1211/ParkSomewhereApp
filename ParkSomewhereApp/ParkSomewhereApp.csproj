@@ -252,7 +252,12 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+
     <Content Include="Content\images\bg3.jpg" />
+
+    <Content Include="Content\images\air-atmosphere-beautiful-531972.jpg" />
+    <Content Include="Content\images\clouds-conifer-daylight-388065.jpg" />
+
     <Content Include="Content\images\park1.jpeg" />
     <Content Include="Content\images\park2.jpeg" />
     <Content Include="Content\images\park3.jpeg" />
@@ -265,6 +270,7 @@
     <Content Include="Content\images\sky-stars-sunset-7117.jpg" />
     <Content Include="Content\images\StarFade.gif" />
     <Content Include="Content\images\StarGlow.gif" />
+
     <Content Include="Content\images\tree.png" />
     <Content Include="Content\images\user1.jpeg" />
     <Content Include="Content\images\user2.jpeg" />
@@ -274,6 +280,9 @@
     <Content Include="Content\images\user6.jpeg" />
     <Content Include="Content\images\user7.jpeg" />
     <Content Include="Content\parkIndexStyle.css" />
+
+    <Content Include="Content\PhotoIndexStyleSheet.css" />
+
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -319,11 +328,14 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\PhotoIndexScript.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.matchmedia.addListener.js" />
     <Content Include="Scripts\respond.matchmedia.addListener.min.js" />
     <Content Include="Scripts\respond.min.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -370,6 +382,7 @@
     <Content Include="Views\users\Index.cshtml" />
     <Content Include="Views\Photos\Add.cshtml" />
     <Content Include="Views\Photos\Index.cshtml" />
+    <Content Include="Views\Photos\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

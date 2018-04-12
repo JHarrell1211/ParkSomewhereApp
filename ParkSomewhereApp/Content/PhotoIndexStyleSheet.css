@@ -1,0 +1,126 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+.photo-index, .details-page {
+    display: block;
+    position: relative;
+}
+
+    .photo-index::after {
+        content: "";
+        background-image: url('images/clouds-conifer-daylight-388065.jpg');
+        background-size: cover;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        position: absolute;
+        z-index: -1;
+    }
+
+    .details-page::after {
+        content: "";
+        background-image: url('images/air-atmosphere-beautiful-531972.jpg');
+        background-size: cover;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        position: absolute;
+        z-index: -1;
+    }
+
+
+.img-thumbnail {
+    position: relative;
+    margin-bottom: 20px;
+    /*width: 50%;*/
+}
+
+.image {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    transition: .5s ease;
+    background-color: #008CBA;
+}
+
+
+.img-thumbnail:hover .overlay {
+    opacity: .9;
+}
+
+.text {
+    color: white;
+    font-size: 14px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+img {
+    width: 100%;
+    height: 200px;
+}
+
+#photoHeader {
+    text-align: center;
+    font-size: 52px;
+    margin-top: 20px;
+    font-family: 'Acme', sans-serif;
+}
+
+#photoAdd {
+    text-align: right;
+}
+
+#buttons {
+    margin-top: 15px;
+}
+
+a {
+    color: white;
+}
+
+.index-row {
+    margin-top: 25px;
+}
+
+.photo-details{
+    text-align: center;
+}
+
+.detail-image{
+    height: 500px;
+    width: 800px;
+}
+
+.details-row{
+    margin-top: 50px;
+}
+
+.details-info {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.empty-row{
+    height: 250px;
+}

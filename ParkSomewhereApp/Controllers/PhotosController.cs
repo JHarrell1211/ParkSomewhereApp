@@ -29,6 +29,7 @@ namespace ParkSomewhereApp.Controllers
             return View(photos.ToList());
         }
 
+
         // GET: Photos
         [HttpGet] [Authorize]
         public ActionResult Add()
@@ -57,8 +58,20 @@ namespace ParkSomewhereApp.Controllers
             ViewBag.ParkID = new SelectList(db.Parks, "ParkID", "ParkName", imageModel.ParkID);
             ViewBag.UserID = new SelectList(db.AspNetUsers, "Id", "Email", imageModel.UserID);
             return RedirectToAction("Index", "Photos");
+        }
 
-
+        public ActionResult Details(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Photo photo = db.Photos.Find(id);
+            if (photo == null)
+            {
+                return HttpNotFound();
+            }
+            return View(photo);
         }
 
 

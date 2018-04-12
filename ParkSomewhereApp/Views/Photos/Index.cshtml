@@ -1,60 +1,92 @@
-﻿@model IEnumerable<ParkSomewhereApp.Models.Photo>
+﻿<link href="https://fonts.googleapis.com/css?family=Acme|Montserrat" rel="stylesheet">
+<link href="~/Content/PhotoIndexStyleSheet.css" rel="stylesheet" />
+<script src="~/Scripts/PhotoIndexScript.js"></script>
 
-@{
-    ViewBag.Title = "Index";
-}
+<body>
+    @model IEnumerable<ParkSomewhereApp.Models.Photo>
 
-<h2>Index</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Add")
-</p>
-<p>
-    @Html.ActionLink("View All Photos", "Index")
-</p>
-@using (Html.BeginForm())
-{
-    <tr>
-        <th>
-            @Html.DropDownList("ParkID", null, htmlAttributes: new { @class = "form-control" })
-        </th>
-        <th>
-            <input type="submit" value="Search" class="btn btn-default" />
-        </th>
-    </tr>
-}
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.ParkID)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Image)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.UserID)
-        </th>
-        <th></th>
-    </tr>
-
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.ParkID)
-            </td>
-            <td>
-                <img src="@Url.Content(item.Image)" height="120" width="120" />
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.AspNetUser.UserName)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.PhotoID }) |
-                @Html.ActionLink("Details", "Details", new { id = item.PhotoID }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.PhotoID })
-            </td>
-        </tr>
+    @{
+        ViewBag.Title = "Index";
     }
 
-</table>
+
+    <div class="photo-index">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <p id="photoHeader">Photo Gallery</p>
+                </div>
+            </div>
+
+
+            @using (Html.BeginForm())
+            {
+                <div class="row">
+                    <div class="col-sm-6">
+                        @Html.DropDownList("ParkID", null, htmlAttributes: new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="row" id="buttons">
+                    <div class="col-sm-12">
+                        <input type="submit" value="Search" class="btn btn-primary" id="photoSubmit" />
+                        <button class="btn btn-warning" id="photoAdd">@Html.ActionLink("Add Photo", "Add")</button>
+                        <button class="btn btn-danger" id="view">
+                            @Html.ActionLink("View All Photos", "Index")
+                        </button>
+                    </div>
+                </div>
+            }
+
+            @*<table class="table">
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ParkID)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Image)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.UserID)
+                        </th>
+                        <th></th>
+                    </tr>
+
+                    @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ParkID)
+                        </td>
+                        <td>
+                            <img src="@Url.Content(item.Image)" height="120" width="120" />
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.AspNetUser.UserName)
+                        </td>
+
+                    </tr>*@
+
+
+            <div class="row index-row" id="ind-row" style="display:block" height="200px">
+                @foreach (var item in Model)
+                {
+                    <div class="col-sm-6 col-md-3 item-col" id="thumb">
+                        <div class="img-thumbnail">
+                            <div class="caption">
+                                <img id="myImg" src="@Url.Content(item.Image)" height="200" width="220" />
+                                <div class="overlay">
+                                    <div class="text">
+                                        @Html.DisplayFor(modelItem => item.Park.ParkName) <br /> Uploaded By: @Html.DisplayFor(modelItem => item.AspNetUser.UserName)
+                                        <p></p>
+                                        @Html.ActionLink("View Image", "Details", new { id = item.PhotoID }, new { target = "_blank" })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+            <div class="row empty-row"></div>
+        </div>
+    </div>
+</body>
