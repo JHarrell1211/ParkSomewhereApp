@@ -69,6 +69,7 @@
     position: absolute;
     top: 50%;
     left: 50%;
+    font-family: 'Montserrat', sans-serif;
     transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%);
     text-align: center;
@@ -84,6 +85,7 @@ img {
     font-size: 52px;
     margin-top: 20px;
     font-family: 'Acme', sans-serif;
+    color: #135e46;
 }
 
 #photoAdd {
@@ -92,6 +94,7 @@ img {
 
 #buttons {
     margin-top: 15px;
+    font-family: 'Montserrat', sans-serif;
 }
 
 a {
@@ -119,8 +122,14 @@ a {
     font-family: 'Montserrat', sans-serif;
     font-size: 16px;
     font-weight: bold;
+    color: #135e46;
 }
 
 .empty-row{
     height: 250px;
+}
+h4 {
+    font-family: 'Acme', sans-serif;
+    font-size: 3rem;
+    color: #135e46;
 }

@@ -15,10 +15,12 @@
 
 h1, h2, h3 {
     font-family: 'Acme', sans-serif;
+    color: #135e46;
 }
 
 p, i {
     font-family: 'Montserrat', sans-serif;
+    color: #135e46;
 }
 
 
@@ -34,4 +36,5 @@ p, i {
 }
 b.boolTitle {
     font-family: 'Acme', sans-serif;
+    color: #135e46;
 }
