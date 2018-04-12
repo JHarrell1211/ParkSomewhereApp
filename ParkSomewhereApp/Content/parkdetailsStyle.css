@@ -1,0 +1,37 @@
+﻿body {
+    /* The image used */
+    background-image: url('images/park1.jpeg');
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#content {
+    padding-top: 30px;
+}
+
+
+
+h1, h2, h3 {
+    font-family: 'Acme', sans-serif;
+}
+
+p, i {
+    font-family: 'Montserrat', sans-serif;
+}
+
+
+@media screen and (max-width: 1024px) { /* Specific to this particular image */
+    img.bg {
+        left: 50%;
+        margin-left: -512px; /* 50% */
+    }
+}
+
+#space {
+    padding-bottom: 30px;
+}
+b.boolTitle {
+    font-family: 'Acme', sans-serif;
+}

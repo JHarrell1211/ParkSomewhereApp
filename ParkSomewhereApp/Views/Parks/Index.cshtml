@@ -135,7 +135,7 @@
                             //function to open info window on click:
                             (function (marker, i) {
                                 google.maps.event.addListener(marker, 'click', function () {
-                                    infowindow.setContent(parkArray[i] + '<center><a href="Details/' + detArray[i] + '" target="_blank">Details for this Park</a></center>');
+                                    infowindow.setContent('<h5> ' + parkArray[i] + ' </h3>' + '<center><a class="btn btn-info" href="Parks/Details/' + detArray[i] + '" target="_blank"> Details</a></center>');
                                     infowindow.open(resultsMap, marker);
                                 });
                             })(marker, i);

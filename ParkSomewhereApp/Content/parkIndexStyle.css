@@ -42,6 +42,11 @@ h3 {
     font-size: 2.5rem;
     margin-top: 5vh;
 }
+h5 {
+    font-family: 'Acme', sans-serif;
+    color: #135e46;
+    font-size: 2.5rem;
+}
 
 h4 {
     font-family: 'Acme', sans-serif;
@@ -78,7 +83,7 @@ div.parkdiv {
     margin-top: 3vh;
     border-width: 3px;
     height: 65vh;
-    background: rgba(255, 255, 255, 0.6);
+    background: rgba(255, 255, 255, 0.7);
   
     
 }

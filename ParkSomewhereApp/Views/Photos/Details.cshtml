@@ -8,23 +8,22 @@
 <link href="~/Content/PhotoIndexStyleSheet.css" rel="stylesheet" />
 
 
+<body class="details-page">
 
 
-
-<div class="details-page">
-    <div class="container">
-        <div class="row details-row">
-            <div class="col-sm-2 details-info">
-                Photo By:<br /> @Html.DisplayFor(model => model.AspNetUser.UserName) <br />
-                <p></p>
-                Park:<br /> @Html.DisplayFor(model => model.Park.ParkName)
-            </div>
-            <div class="col-sm-10 photo-details">
-                <img class="detail-image" src="@Url.Content(Model.Image)" />
+        <div class="container">
+            <div class="row details-row">
+                <div class="col-sm-2 details-info">
+                    Photo By:<br /> @Html.DisplayFor(model => model.AspNetUser.UserName) <br />
+                    <p></p>
+                    Park:<br /> @Html.DisplayFor(model => model.Park.ParkName)
+                </div>
+                <div class="col-sm-10 photo-details">
+                    <img class="detail-image" src="@Url.Content(Model.Image)" />
+                </div>
             </div>
         </div>
-    </div>
-    <div class="row empty-row"> </div>
-</div>
+        <div class="row empty-row"> </div>
 
 
+</body>

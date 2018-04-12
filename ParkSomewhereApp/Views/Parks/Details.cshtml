@@ -1,280 +1,123 @@
-﻿@model ParkSomewhereApp.Models.Park
+﻿<link href="~/Content/parkdetailsStyle.css" rel="stylesheet" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="~/Content/JavaScript.js"></script>
+@model ParkSomewhereApp.Models.Park
 @{
     ViewBag.Title = Model.ParkName;
     var comments = (IEnumerable<ParkSomewhereApp.Models.Review>)ViewBag.ReviewComments;
-
-    var photos = (IEnumerable<ParkSomewhereApp.Models.Photo>)ViewBag.Image;
     var ratingSum = ViewBag.RatingSum;
     var ratingCount = ViewBag.RatingCount;
-
     decimal rating = 0;
     if (ratingCount > 0)
     {
         rating = (ratingSum / ratingCount);
     }
     var totalRating = decimal.Parse(rating.ToString());
+
 }
+<body>
 
-<h2>Details</h2>
+    <div class="row-fluid" id="content">
+        <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12" style="opacity:1">
 
-<div>
-    <h4>Park</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.ParkName)
-        </dt>
+            <h2>@Model.ParkName</h2>
 
-        <dd>
-            @Html.DisplayFor(model => model.ParkName)
-        </dd>
+            <div>
+                @for (int i = 0; i < totalRating; i++)
+                {
+                    <span class="starGlowN"></span>
+                }
+                @for (var i = (totalRating + 1); i <= 5; i++)
+                {
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Address)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Address)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Latitude)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Latitude)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Longitude)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Longitude)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.OpenTime)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.OpenTime)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.CloseTime)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CloseTime)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Descripton)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Descripton)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Photo)
-        </dt>
-
-        <dd>
-            <img src="@Html.DisplayFor(model => model.Photo)" height="120" width="120"/>
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.AvgRating)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.AvgRating)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.NumberRatings)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.NumberRatings)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Restrooms)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Restrooms)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.PicnicArea)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.PicnicArea)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Grill)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Grill)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Playground)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Playground)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.HikingTrail)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.HikingTrail)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.PavedTrail)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.PavedTrail)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.BasketballCourt)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.BasketballCourt)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.BaseballDiamond)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.BaseballDiamond)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.CampGround)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CampGround)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Fishing)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Fishing)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Swimming)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Swimming)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.FitnessTrail)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.FitnessTrail)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ADAAccessible)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ADAAccessible)
-        </dd>
-
-    </dl>
-</div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ParkID }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+                    <span class="starFade"></span>
+                }
+            </div>
 
 
-<h2>@Model.ParkName</h2>
-<div>
-    <span class="starFadeN" id="sRate1"></span><span class="starFadeN" id="sRate2"></span><span class="starFadeN" id="sRate3"></span><span class="starFadeN" id="sRate4"></span><span class="starFadeN" id="sRate5"></span>
-</div>
-
-
-<div>
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Descripton)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Descripton)
-        </dd>
-
-        <dd>
-            @Html.DisplayFor(model => model.ParkName)
-        </dd>
-    </dl>
-</div>
-@foreach (var c in comments)
-{
-    <hr />
-    <div class="row">
-        <div class="col-md-3">
-            <i>@c.ReviewTimeStamp</i>
-            <p>By @c.AspNetUser.UserName</p>
-            <br />
-            @for (var i = 1; i <= c.Rating; i++)
-            {
-                <span class="starGlowN"></span>
-            }
-            @for (var i = (c.Rating + 1); i <= 5; i++)
-            {
-                <span class="starFadeN"></span>
-            }
+            <p>@Html.DisplayFor(model => model.Descripton)</p>
         </div>
-        <div class="col-md-9">
-            @Html.Raw(c.ReviewComments.Replace("\n", "<br />"))
 
+        <div class="row-fluid" style="height:500px ; background-color:#99be8f;z-index:1">
+            <div class="col-lg-1"></div>
+            <div class="col-sm-6 col-xs-10 col-md-5 col-lg-5">
+                <div class="carousel-inner">
+                    <div class="thumbnail-frame" style="z-index:1">
+                        <img src="@Html.DisplayFor(model => model.Photo)" style="height:300px" width="490px" />
+                        <span></span>
+                    </div>
+                </div>
+                <a class="carousel-control left" href='#carousel' data-slide="prev">
+                    <span class='glyphicon glyphicon-chevron-left'></span>
+                </a>
+                <a class="carousel-control right" href='#carousel' data-slide="next">
+                    <span class='glyphicon glyphicon-chevron-right'></span>
+                </a>
+            </div>
 
+            <div class="col-sm-offset-0 col-xs-offset-0 col-lg-2 col-md-offset-0"></div>
+            <div class="col-sm-6 col-xs-10 col-md-5 col-lg-5">
+                <div class="thumbnail" style=" background-color:#cbeea8;opacity:0.9">
+                    <div class="caption">
+
+                        <b class="boolTitle">@Html.DisplayNameFor(model => model.Address):</b> @Html.DisplayFor(model => model.Address) <br />
+
+                        <b class="boolTitle">@Html.DisplayNameFor(model => model.OpenTime): </b>@Html.DisplayFor(model => model.OpenTime)Am      <br />
+                        <b class="boolTitle"> @Html.DisplayNameFor(model => model.CloseTime): </b> @Html.DisplayFor(model => model.CloseTime)Pm      <br />
+                        <b class="boolTitle">@Html.DisplayNameFor(model => model.Restrooms): </b> @Html.DisplayFor(model => model.Restrooms)
+
+                        <b class="boolTitle">@Html.DisplayNameFor(model => model.PicnicArea):</b>@Html.DisplayFor(model => model.PicnicArea)
+                        <b class="boolTitle">@Html.DisplayNameFor(model => model.Grill):</b>  @Html.DisplayFor(model => model.Grill)
+                        <b class="boolTitle"> @Html.DisplayNameFor(model => model.Playground):</b> @Html.DisplayFor(model => model.Playground)<br />
+                        <b class="boolTitle"> @Html.DisplayNameFor(model => model.HikingTrail):</b> @Html.DisplayFor(model => model.HikingTrail)
+                        <b class="boolTitle"> @Html.DisplayNameFor(model => model.PavedTrail):</b> @Html.DisplayFor(model => model.PavedTrail)
+                        <b class="boolTitle">@Html.DisplayNameFor(model => model.BasketballCourt):</b>  @Html.DisplayFor(model => model.BasketballCourt)<br />
+                        <b class="boolTitle">@Html.DisplayNameFor(model => model.BaseballDiamond):</b>  @Html.DisplayFor(model => model.BaseballDiamond)
+                        <b class="boolTitle">@Html.DisplayNameFor(model => model.CampGround):</b>  @Html.DisplayFor(model => model.CampGround)
+                        <b class="boolTitle"> @Html.DisplayNameFor(model => model.Fishing):</b>  @Html.DisplayFor(model => model.Fishing)<br />
+                        <b class="boolTitle">@Html.DisplayNameFor(model => model.Swimming):</b> @Html.DisplayFor(model => model.Swimming)
+                        <b class="boolTitle">@Html.DisplayNameFor(model => model.FitnessTrail):</b>  @Html.DisplayFor(model => model.FitnessTrail)
+                        <b class="boolTitle">@Html.DisplayNameFor(model => model.ADAAccessible):</b> @Html.DisplayFor(model => model.ADAAccessible)
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-}
-<hr />
-<script>
-    function SCRate() {
-        for (var i = 1; i <= @totalRating; i++) {
-            $("#sRate" + i).attr('class', 'starGlowN');
-        }
-    }
-    $(function(){
-        SCRate();
-    });
-</script>
 
+    <div class="row" id="space">
+        <div class="col-lg-12"></div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            @foreach (var c in comments)
+            {
 
+                <div class="row" style="background-color:#d0c7a2">
+                    <div class="col-md-3">
+                        <i>@c.ReviewTimeStamp</i>
+                        <p>By @c.AspNetUser.UserName</p>
+                        <br />
+                        @for (var i = 1; i <= c.Rating; i++)
+                        {
+                            <span class="starGlowN"></span>
+                        }
+                        @for (var i = (c.Rating + 1); i <= 5; i++)
+                        {
 
-@*@model ParkSomewhereApp.Models.Park
+                            <span class="starFade"></span>
+                        }
+                    </div>
+                    <div class="col-lg-2"></div>
+                    <div class="col-md-5">
+                        <br /><br />
+                        <p> @Html.Raw(c.ReviewComments.Replace("\n", "<br />"))</p>
 
-    @{
-        ViewBag.Title = "Details";
-    }*@
+                    </div>
+                </div>
+                <br />
 
-    
+            }
+        </div>
+    </div>
+
+</body>
