@@ -29,7 +29,7 @@ namespace ParkSomewhereApp.Controllers
             ViewBag.ParkID = new SelectList(db.Parks, "ParkID", "ParkName");
             var reviews = db.Reviews.Include(r => r.Park).Include(r => r.AspNetUser).Where(r => r.ParkID == ParkID).OrderByDescending(r => r.ReviewTimeStamp)
                 .ThenBy(r => r.Rating).ToList();
-            return View(reviews.ToList());
+                      return View(reviews.ToList());
         }
 
         // GET: Reviews/Details/5

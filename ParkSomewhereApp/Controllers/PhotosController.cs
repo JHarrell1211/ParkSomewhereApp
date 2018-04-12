@@ -49,7 +49,7 @@ namespace ParkSomewhereApp.Controllers
             ModelState.Clear();
             ViewBag.ParkID = new SelectList(db.Parks, "ParkID", "ParkName", imageModel.ParkID);
             ViewBag.UserID = new SelectList(db.AspNetUsers, "Id", "Email", imageModel.UserID);
-            return View();
+            return RedirectToAction("Index", "Photos");
 
 
         }

@@ -84,6 +84,7 @@
         });
     }
 
+
     //using geocoder to search, and dropping marker pins based on database lat/long values:
     function geocodeAddress(geocoder, resultsMap) {
         var address = document.getElementById('address').value;
@@ -93,17 +94,19 @@
                 resultsMap.setCenter(results[0].geometry.location);
                 //for loop to add markers from database:
                 for (i = 0; i < latArray.length; i++) {
-                    marker = new google.maps.Marker({
-                        position: { lat: parseFloat(latArray[i]), lng: parseFloat(longArray[i]) },
-                        map: resultsMap,
-                        title: parkArray[i],
-                        //animation: google.maps.Animation.DROP,
-                        //icon: 'images/treeicon.png',
+                                  
+                        marker = new google.maps.Marker({
+                            position: { lat: parseFloat(latArray[i]), lng: parseFloat(longArray[i]) },
+                            map: resultsMap,
+                            title: parkArray[i],
+                            //animation: google.maps.Animation.DROP,
+                            //icon: 'images/treeicon.png',
+                        
                     });
                     //function to open info window on click:
                     (function (marker, i) {
                         google.maps.event.addListener(marker, 'click', function () {
-                            infowindow.setContent((i + 1) + ". " + parkArray[i] + ": " + descArray[i] + '<center><a href="Details/' + detArray[i] + '" target="_blank">Details for this Park</a></center>');
+                            infowindow.setContent( parkArray[i] + ": " + descArray[i] + '<center><a href="Details/' + detArray[i] + '" target="_blank">Details for this Park</a></center>');
                             infowindow.open(resultsMap, marker);
                         });
                     })(marker, i);
@@ -197,9 +200,10 @@
         </th>
         <th></th>
     </tr>
-
+   
     @foreach (var item in Model)
     {
+       
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.ParkName)
