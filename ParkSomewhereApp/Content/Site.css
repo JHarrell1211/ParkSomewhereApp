@@ -88,3 +88,10 @@ a.navbar-brand {
         background-color: #a5db98;
         border-color: #a5db98 !important;
     }
+
+footer {
+    font-family: 'Montserrat', sans-serif;
+    color: #135e46;
+    text-align:center;
+    font-weight:bold;
+}
