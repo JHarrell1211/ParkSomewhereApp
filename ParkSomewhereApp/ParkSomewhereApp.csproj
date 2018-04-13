@@ -275,6 +275,7 @@
     <Content Include="Content\images\StarFade.gif" />
     <Content Include="Content\images\StarGlow.gif" />
     <Content Include="Content\images\tree.png" />
+    <Content Include="Content\jovonStyle2.css" />
     <Content Include="Content\parkdetailsStyle.css" />
     <Content Include="Content\parkIndexStyle.css" />
     <Content Include="Content\pexels-photo-172510.jpeg" />
@@ -298,6 +299,7 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="Content\jovonStyle1.css" />
     <Content Include="Models\ParkSomewhereModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>ParkSomewhereModel.edmx</DependentUpon>
