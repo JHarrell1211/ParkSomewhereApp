@@ -248,10 +248,14 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\agriculture-apple-apple-tree-6035.jpg" />
+    <Content Include="Content\bench-forest-nature-park-630758.jpeg" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\createParkStyleSheet.css" />
+    <Content Include="Content\homeIndexStyleSheet.css" />
     <Content Include="Content\images\air-atmosphere-beautiful-531972.jpg" />
     <Content Include="Content\images\alphabets-ancient-box-529926.jpg" />
     <Content Include="Content\images\bg4.jpg" />
@@ -265,6 +269,7 @@
     <Content Include="Content\images\park8.jpg" />
     <Content Include="Content\images\parkbg2.jpg" />
     <Content Include="Content\images\parksbg.jpg" />
+    <Content Include="Content\images\pexels-photo-164005.jpeg" />
     <Content Include="Content\images\photo7.jpeg" />
     <Content Include="Content\images\sky-stars-sunset-7117.jpg" />
     <Content Include="Content\images\StarFade.gif" />
@@ -272,7 +277,12 @@
     <Content Include="Content\images\tree.png" />
     <Content Include="Content\parkdetailsStyle.css" />
     <Content Include="Content\parkIndexStyle.css" />
+    <Content Include="Content\pexels-photo-172510.jpeg" />
+    <Content Include="Content\pexels-photo-354611.jpeg" />
+    <Content Include="Content\pexels-photo-397096.jpeg" />
+    <Content Include="Content\pexels-photo-531756.jpeg" />
     <Content Include="Content\PhotoIndexStyleSheet.css" />
+    <Content Include="Content\UserIndexStyle.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />

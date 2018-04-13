@@ -1,18 +1,16 @@
 ﻿@model ParkSomewhereApp.Models.Park
-
 @{
     ViewBag.Title = "Create";
 }
-
+<link href="~/Content/createParkStyleSheet.css" rel="stylesheet" />
 <h2>Create</h2>
 
-
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
-        <h4>Park</h4>
+        <h4>Add a New Park</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
@@ -22,7 +20,6 @@
                 @Html.ValidationMessageFor(model => model.ParkName, "", new { @class = "text-danger" })
             </div>
         </div>
-
         <div class="form-group">
             @Html.LabelFor(model => model.Address, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -30,7 +27,6 @@
                 @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
             </div>
         </div>
-
         <div class="form-group">
             @Html.LabelFor(model => model.Latitude, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -38,7 +34,6 @@
                 @Html.ValidationMessageFor(model => model.Latitude, "", new { @class = "text-danger" })
             </div>
         </div>
-
         <div class="form-group">
             @Html.LabelFor(model => model.Longitude, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -46,7 +41,6 @@
                 @Html.ValidationMessageFor(model => model.Longitude, "", new { @class = "text-danger" })
             </div>
         </div>
-
         <div class="form-group">
             @Html.LabelFor(model => model.OpenTime, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -54,7 +48,6 @@
                 @Html.ValidationMessageFor(model => model.OpenTime, "", new { @class = "text-danger" })
             </div>
         </div>
-
         <div class="form-group">
             @Html.LabelFor(model => model.CloseTime, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -62,7 +55,6 @@
                 @Html.ValidationMessageFor(model => model.CloseTime, "", new { @class = "text-danger" })
             </div>
         </div>
-
         <div class="form-group">
             @Html.LabelFor(model => model.Descripton, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -70,7 +62,6 @@
                 @Html.ValidationMessageFor(model => model.Descripton, "", new { @class = "text-danger" })
             </div>
         </div>
-
         <div class="form-group">
             @Html.LabelFor(model => model.Photo, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -78,23 +69,21 @@
                 @Html.ValidationMessageFor(model => model.Photo, "", new { @class = "text-danger" })
             </div>
         </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.AvgRating, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.AvgRating, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.AvgRating, "", new { @class = "text-danger" })
+        @*<div class="form-group">
+                @Html.LabelFor(model => model.AvgRating, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.AvgRating, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.AvgRating, "", new { @class = "text-danger" })
+                </div>
             </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.NumberRatings, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.NumberRatings, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.NumberRatings, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
+            <div class="form-group">
+                @Html.LabelFor(model => model.NumberRatings, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.NumberRatings, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.NumberRatings, "", new { @class = "text-danger" })
+                </div>
+            </div>*@
         <div class="form-group">
             @Html.LabelFor(model => model.Restrooms, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -104,7 +93,6 @@
                 </div>
             </div>
         </div>
-
         <div class="form-group">
             @Html.LabelFor(model => model.PicnicArea, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -114,7 +102,6 @@
                 </div>
             </div>
         </div>
-
         <div class="form-group">
             @Html.LabelFor(model => model.Grill, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -124,7 +111,6 @@
                 </div>
             </div>
         </div>
-
         <div class="form-group">
             @Html.LabelFor(model => model.Playground, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -134,7 +120,6 @@
                 </div>
             </div>
         </div>
-
         <div class="form-group">
             @Html.LabelFor(model => model.HikingTrail, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -144,7 +129,6 @@
                 </div>
             </div>
         </div>
-
         <div class="form-group">
             @Html.LabelFor(model => model.PavedTrail, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -154,7 +138,6 @@
                 </div>
             </div>
         </div>
-
         <div class="form-group">
             @Html.LabelFor(model => model.BasketballCourt, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -164,7 +147,6 @@
                 </div>
             </div>
         </div>
-
         <div class="form-group">
             @Html.LabelFor(model => model.BaseballDiamond, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -174,7 +156,6 @@
                 </div>
             </div>
         </div>
-
         <div class="form-group">
             @Html.LabelFor(model => model.CampGround, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -184,7 +165,6 @@
                 </div>
             </div>
         </div>
-
         <div class="form-group">
             @Html.LabelFor(model => model.Fishing, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -194,7 +174,6 @@
                 </div>
             </div>
         </div>
-
         <div class="form-group">
             @Html.LabelFor(model => model.Swimming, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -204,7 +183,6 @@
                 </div>
             </div>
         </div>
-
         <div class="form-group">
             @Html.LabelFor(model => model.FitnessTrail, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -214,7 +192,6 @@
                 </div>
             </div>
         </div>
-
         <div class="form-group">
             @Html.LabelFor(model => model.ADAAccessible, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -224,7 +201,6 @@
                 </div>
             </div>
         </div>
-
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Create" class="btn btn-default" />
@@ -232,11 +208,10 @@
         </div>
     </div>
 }
-
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
-
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }
+
