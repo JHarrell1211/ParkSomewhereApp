@@ -25,9 +25,23 @@ h2#welcome {
     font-weight: bolder;
     text-shadow: 1px 1px grey;
     font-size: larger;
+    font-family: 'Montserrat', sans-serif;
 }
-/*.rowcarousel{
+
+#se {
+    color: white;
+    text-shadow: 1px 1px grey;
+}
+#he {
+    color: white;
+    text-shadow: 1px 1px black;
+}
+
+    /*.rowcarousel{
     display:flex;
     margin-top: 120px;
     flex: 1 1 20 em;
 }
+
+   
+
