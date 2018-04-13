@@ -24,18 +24,22 @@ h2#welcome {
     color: black;
     font-weight: bolder;
     text-shadow: 1px 1px grey;
-    font-size: larger;
+    font-size: 4rem;
     font-family: 'Montserrat', sans-serif;
+    
+}
+h3{
+    font-size: 3rem;
 }
 
-#se {
+/*#se {
     color: white;
     text-shadow: 1px 1px grey;
 }
 #he {
     color: white;
     text-shadow: 1px 1px black;
-}
+}*/
 
     /*.rowcarousel{
     display:flex;

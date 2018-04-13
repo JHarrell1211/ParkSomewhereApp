@@ -8,8 +8,10 @@ h3#admin-welcome {
     text-align: center;
     color: #a5db98 !important;
     font-family: 'Acme', sans-serif;
+    font-size: 3rem;
     text-shadow: 2px 2px grey;
     font-weight: bold;
+    margin-bottom: 5vh;
 }
 
 h3#user-welcome {
@@ -17,18 +19,23 @@ h3#user-welcome {
     text-align: center;
     color: #a5db98 !important;
     font-family: 'Acme', sans-serif;
+    font-size: 3rem;
     text-shadow: 2px 2px grey;
     font-weight: bold;
+    margin-bottom: 5vh;
 }
 
 div.container.body-content {
 }
 
 a {
-    color: #a5db98 !important;
+    color:white;
     font-family: 'Montserrat', sans-serif;
     font-weight: bold;
 }
 
+#space{
+    height:350px;
+}
 
-Add Comment
+

@@ -1,0 +1,33 @@
+﻿body {
+    position: absolute;
+    top: -20px;
+    left: -20px;
+    right: -40px;
+    bottom: -40px;
+    width: auto;
+    height: auto;
+    background-image: url('images/botanical-cactus-close-up-305821.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 0;
+    color: green;
+}
+
+h4 {
+    font-family: 'Acme', sans-serif;
+    color: #135e46;
+    font-size:3rem;
+
+}
+.form-group {
+    font-family: 'Montserrat', sans-serif;
+    color: #135e46;
+}
+#space{
+    height: 150px;
+}
+#space2 {
+    height: 100px;
+}

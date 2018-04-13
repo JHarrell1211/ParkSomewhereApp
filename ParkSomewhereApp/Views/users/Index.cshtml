@@ -1,4 +1,6 @@
 ﻿@{
+    /**/
+
     ViewBag.Title = "Index";
 }
 <link href="~/Content/UserIndexStyle.css" rel="stylesheet" />
@@ -6,12 +8,20 @@
 {
     <h3 id="admin-welcome">Welcome Admin. Now you can create new parks.</h3>
 
-    <li>@Html.ActionLink("Creat New Park", "Create", "Parks")</li>
+    <center><button class="btn btn-danger">@Html.ActionLink("Create New Park", "Create", "Parks")</button></center>
+    <div class="row" id="space"></div>
 
 }
 else
 {
     <h3 id="user-welcome">  Welcome <strong>@ViewBag.Name</strong>.  You can add a review or upload a photo here. </h3>
-    <li>@Html.ActionLink("Add Photo", "Add", "Photos")</li>
-    <li>@Html.ActionLink("Write Review", "Create", "Reviews")</li>
-}
+    <center>
+        <button class="btn btn-info" id="photoAdd">@Html.ActionLink("Add Photo", "Add", "Photos")</button>
+    </center>
+    <br/>
+    <center>
+        <button class="btn btn-danger" id="photoAdd">@Html.ActionLink("Write Review", "Create", "Reviews")</button>
+    </center>
+            <div class="row" id="space"></div>
+
+            }

@@ -38,7 +38,7 @@
             <p>@Html.DisplayFor(model => model.Descripton)</p>
         </div>
 
-        <div class="row-fluid" style="height:500px ; background-color:#99be8f;z-index:1">
+        <div class="row-fluid" style="height:500px ; background-color: bisque;z-index:1">
             <div class="col-lg-1"></div>
             <div class="col-sm-6 col-xs-10 col-md-5 col-lg-5">
                 <div class="carousel-inner">
@@ -62,8 +62,8 @@
 
                         <b class="boolTitle">@Html.DisplayNameFor(model => model.Address):</b> <p>@Html.DisplayFor(model => model.Address)</p> 
 
-                        <b class="boolTitle">Park Opens: </b><p>@Html.DisplayFor(model => model.OpenTime)Am    </p> 
-                        <b class="boolTitle"> Park Closes: </b> <p>@Html.DisplayFor(model => model.CloseTime)Pm  </p>    
+                        <b class="boolTitle">Park Opens: </b><p>@Html.DisplayFor(model => model.OpenTime)AM    </p> 
+                        <b class="boolTitle"> Park Closes: </b> <p>@Html.DisplayFor(model => model.CloseTime)PM  </p>    
                         <b class="boolTitle">@Html.DisplayNameFor(model => model.Restrooms): </b> @Html.DisplayFor(model => model.Restrooms)
 
                         <b class="boolTitle">Picnic Area:</b>@Html.DisplayFor(model => model.PicnicArea)
@@ -92,7 +92,7 @@
             @foreach (var c in comments)
             {
 
-                <div class="row" style="background-color:#d0c7a2">
+                <div class="row" style="background-color:bisque">
                     <div class="col-md-3">
                         <i>@c.ReviewTimeStamp</i><br/>
                         <b class="boolTitle">By @c.AspNetUser.UserName</b>

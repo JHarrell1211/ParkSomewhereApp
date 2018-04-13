@@ -15,7 +15,7 @@
                     <h2 id="add-header">Add New Photo</h2>
                 </div>
             </div>
-            <div class="row">
+           <center> <div class="row">
                 <div class="col-sm-3"></div>
                 <div class="col-sm-6" id="photoForm">
                     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
@@ -26,15 +26,16 @@
                             <p class="add"><input type="file" name="ImageFile" required /></p>
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row" id="btnrow">
                         <div class="form-group">
-                            <div class="col-md-offset-2 col-md-10">
+                            <div class="col-md-10">
                                 <input type="submit" value="Submit" class="btn btn-success" />
                             </div>
                         </div>
                     </div>
+                    <div class="row" id="space"></div>
                 </div>
-            </div>
+            </div></center>
         }
         @section Scripts {
             @Scripts.Render("~/bundles/jqueryval")
