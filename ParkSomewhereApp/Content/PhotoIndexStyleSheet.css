@@ -3,7 +3,7 @@
     padding-bottom: 20px;
 }
 
-.photo-index, .details-page {
+.photo-index, .details-page, .addPage {
     display: block;
     position: relative;
 }
@@ -17,6 +17,7 @@
         right: 0;
         left: 0;
         position: absolute;
+        height: 100vh;
         z-index: -1;
     }
 
@@ -29,6 +30,21 @@
         right: 0;
         left: 0;
         position: absolute;
+        height: 100vh;
+        z-index: -1;
+    }
+
+    .addPage::after {
+        content: "";
+        background-image: url('images/alphabets-ancient-box-529926.jpg');
+        background-size: cover;
+        background-attachment: fixed;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        position: absolute;
+        height: 100vh;
         z-index: -1;
     }
 
@@ -124,3 +140,24 @@ a {
 .empty-row{
     height: 250px;
 }
+
+#add-header {
+    text-align: center;
+    color: white;
+    font-size: 52px;
+    font-family: 'Acme', sans-serif;
+}
+
+
+.row-space{
+    margin-top: 15px;
+}
+
+#image{
+    margin-left: .5px;
+}
+
+.add{
+    color: white;
+}
+

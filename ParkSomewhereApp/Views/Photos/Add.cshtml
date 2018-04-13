@@ -1,50 +1,73 @@
-﻿@model ParkSomewhereApp.Models.Photo
+﻿<link href="https://fonts.googleapis.com/css?family=Acme|Montserrat" rel="stylesheet">
+<link href="~/Content/PhotoIndexStyleSheet.css" rel="stylesheet" />
 
-@{
-    ViewBag.Title = "Add";
-}
+<body class="addPage">
+    @model ParkSomewhereApp.Models.Photo
 
-<h2>Add</h2>
-
-
-@using (Html.BeginForm("Add", "Photos", FormMethod.Post, new { enctype = "multipart/form-data" }))
-{
-    @Html.AntiForgeryToken()
-
-    <div class="form-horizontal">
-        <h4>Photo</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.ParkID, "ParkID", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("ParkID", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.ParkID, "", new { @class = "text-danger" })
+    @{
+        ViewBag.Title = "Add";
+    }
+    <div class="container">
+        @using (Html.BeginForm("Add", "Photos", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+            <div class="row empty-row"></div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <h2 id="add-header">Add New Photo</h2>
+                </div>
             </div>
-        </div>
+            <div class="row">
+                <div class="col-sm-3"></div>
+                <div class="col-sm-6">
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    @*<p class="add" id="park">@Html.LabelFor(model => model.ParkID, "Park", htmlAttributes: new { @class = "control-label col-md-2" })</p>*@
+                    @Html.DropDownList("ParkID", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.ParkID, "", new { @class = "text-danger" })
+                    @*<div class="row">
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Image, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <input type="file" name="ImageFile" required />
+                        </div>*@
+                    <div class="row row-space" id="image">
+                        <div class="form-group">
+                            @*<p class="add">@Html.LabelFor(model => model.Image, htmlAttributes: new { @class = "control-label col-md-2" })</p>*@
+                            <p class="add"><input type="file" name="ImageFile" required /></p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <input type="submit" value="Submit" class="btn btn-success" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                @*<div class="form-group">
+                        @Html.LabelFor(model => model.Image, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            <input type="file" name="ImageFile" required />
+                        </div>
+                    </div>*@
+
+
+                @*<div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Submit" class="btn btn-success" />
+                        </div>
+                    </div>*@
+
             </div>
-        </div>
-
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
-            </div>
-        </div>
-
-        </div>
-
+            <div class="row empty-row"></div>
         }
 
         @*<div>
-            @Html.ActionLink("Back to List", "Index")
-        </div>*@
+                @Html.ActionLink("Back to List", "Index")
+            </div>*@
 
         @section Scripts {
             @Scripts.Render("~/bundles/jqueryval")
         }
+    </div>
+
+</body>
