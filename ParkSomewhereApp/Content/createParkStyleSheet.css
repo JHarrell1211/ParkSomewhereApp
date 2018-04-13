@@ -1,17 +1,19 @@
 ﻿body {
     display: block;
     position: relative;
-    color: #a5db98 !important;
+    color: #135e46 !important;
     font-family: 'Montserrat', sans-serif;
     font-weight: bold;
-    text-shadow: 2px 2px grey;
 }
 
     body::after {
         content: "";
-        background-image: url('agriculture-apple-apple-tree-6035.jpg');
-        background-size: cover;
-        top: 0;
+          
+          /*background-image: url('images/agriculture-apple-blur-257840.jpg');*/
+        background-image: url('images/accomplishment-adult-adventure-372098.jpg');
+     background-size: cover;
+     background-attachment: fixed;
+     top: 0;
         bottom: 0;
         right: 0;
         left: 0;
@@ -22,10 +24,10 @@
 
 h4 {
     text-align: center;
-    color: #a5db98 !important;
+    color: #135e46 !important;
     font-family: 'Acme', sans-serif;
-    text-shadow: 2px 2px grey;
+    font-size:3rem;
 }
-
-
-Add CommentCollapse 
+.checkbox{
+    margin-left: 120px;
+}

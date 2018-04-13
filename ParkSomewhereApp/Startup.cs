@@ -28,9 +28,9 @@ namespace ParkSomewhereApp
                 roleManager.Create(role);
                 //Here we create a Admin super user who will maintain the website                  
                 var user = new ApplicationUser();
-                user.UserName = "shanu";
-                user.Email = "syedshanumcain@gmail.com";
-                string userPWD = "A@Z200711";
+                user.UserName = "admin";
+                user.Email = "admin@gmail.com";
+                string userPWD = "Admin123!";
                 var chkUser = UserManager.Create(user, userPWD);
                 //Add default User to Role Admin   
                 if (chkUser.Succeeded)

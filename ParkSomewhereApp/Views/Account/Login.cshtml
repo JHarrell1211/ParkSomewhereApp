@@ -70,7 +70,7 @@
             @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
             {
                 @Html.AntiForgeryToken()
-                <h1>Use a local account to log in</h1>
+                <h1>Log In</h1>
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                 <p>
                     @Html.LabelFor(m => m.UserName, new { @class = "col-md-2 control-label" })

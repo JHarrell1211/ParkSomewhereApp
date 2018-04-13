@@ -256,10 +256,13 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\createParkStyleSheet.css" />
     <Content Include="Content\homeIndexStyleSheet.css" />
+    <Content Include="Content\images\accomplishment-adult-adventure-372098.jpg" />
+    <Content Include="Content\images\agriculture-apple-blur-257840.jpg" />
     <Content Include="Content\images\air-atmosphere-beautiful-531972.jpg" />
     <Content Include="Content\images\alphabets-ancient-box-529926.jpg" />
     <Content Include="Content\images\bg4.jpg" />
     <Content Include="Content\images\clouds-conifer-daylight-388065.jpg" />
+    <Content Include="Content\images\login.jpg" />
     <Content Include="Content\images\park1.jpeg" />
     <Content Include="Content\images\park2.jpeg" />
     <Content Include="Content\images\park3.jpeg" />
