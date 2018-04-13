@@ -37,6 +37,9 @@ namespace ParkSomewhereApp.Controllers
             var comments = db.Reviews.Where(d => d.ParkID.Equals(id.Value)).ToList();
             ViewBag.ReviewComments = comments;
 
+            var titles = db.Reviews.Where(d => d.ParkID.Equals(id.Value)).ToList();
+            ViewBag.ReviewTitle = titles;
+
             var ratings = db.Reviews.Where(d => d.ParkID.Equals(id.Value)).ToList();
             if (ratings.Count() > 0)
             {

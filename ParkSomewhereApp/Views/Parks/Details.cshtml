@@ -5,6 +5,7 @@
 @{
     ViewBag.Title = Model.ParkName;
     var comments = (IEnumerable<ParkSomewhereApp.Models.Review>)ViewBag.ReviewComments;
+    var titles = (IEnumerable<ParkSomewhereApp.Models.Review>)ViewBag.ReviewTitle;
     var ratingSum = ViewBag.RatingSum;
     var ratingCount = ViewBag.RatingCount;
     decimal rating = 0;
@@ -109,7 +110,9 @@
                     </div>
                     <div class="col-lg-2"></div>
                     <div class="col-md-5">
-                        <br /><br />
+                      
+                        <h3> @Html.Raw(c.ReviewTitle.Replace("\n", "<br />"))</h3>
+
                         <p> @Html.Raw(c.ReviewComments.Replace("\n", "<br />"))</p>
 
                     </div>
