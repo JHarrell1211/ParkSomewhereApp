@@ -3,7 +3,7 @@
     padding-bottom: 20px;
 }
 
-.photo-index, .details-page {
+.photo-index, .details-page, .addPage{
     display: block;
     position: relative;
 }
@@ -20,6 +20,17 @@
         z-index: -1;
     }
 
+    .addPage::after {
+        content: "";
+        background-image: url('images/alphabets-ancient-box-529926.jpg');
+        background-size: cover;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        position: absolute;
+        z-index: -1;
+    }
     .details-page::after {
         content: "";
         background-image: url('images/air-atmosphere-beautiful-531972.jpg');
@@ -73,6 +84,9 @@
     transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%);
     text-align: center;
+}
+input {
+    font-family: 'Montserrat', sans-serif;
 }
 
 img {
@@ -133,3 +147,25 @@ h4 {
     font-size: 3rem;
     color: #135e46;
 }
+#add-header {
+    text-align: center;
+    color: white;
+    font-size: 52px;
+    font-family: 'Acme', sans-serif;
+}
+
+
+.row-space {
+    margin-top: 15px;
+}
+
+#image {
+    margin-left: .5px;
+}
+
+.add {
+    color: white;
+}
+/*#photoForm{
+    text-align: center;
+}*/
