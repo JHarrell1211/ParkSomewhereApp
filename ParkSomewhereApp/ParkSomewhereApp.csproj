@@ -241,9 +241,6 @@
     <Compile Include="Models\Review.cs">
       <DependentUpon>ParkSomewhereModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\sysdiagram.cs">
-      <DependentUpon>ParkSomewhereModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>

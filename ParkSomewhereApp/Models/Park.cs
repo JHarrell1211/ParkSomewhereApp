@@ -45,6 +45,7 @@ namespace ParkSomewhereApp.Models
         public bool Swimming { get; set; }
         public bool FitnessTrail { get; set; }
         public bool ADAAccessible { get; set; }
+        public string GoogleMap { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Photo> Photos { get; set; }

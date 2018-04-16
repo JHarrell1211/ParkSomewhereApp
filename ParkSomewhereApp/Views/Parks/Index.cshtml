@@ -19,7 +19,8 @@
         var parkArray = [];
         var descArray = [];
         var detArray = [];
-        var userArray = [];
+            var userArray = [];
+            var linkArray = [];
 
 
         @foreach (var d in Model)
@@ -42,6 +43,11 @@
         {
             @:detArray.push("@d.ParkID");
         }
+                @foreach (var d in Model)
+        {
+            @:linkArray.push("@d.GoogleMap");
+        }
+
         </script>
 
         @*divs for title, map, search bar, weather*@
@@ -137,7 +143,7 @@
                             //function to open info window on click:
                             (function (marker, i) {
                                 google.maps.event.addListener(marker, 'click', function () {
-                                    infowindow.setContent('<h5> ' + parkArray[i] + ' </h3>' + '<center><a class="btn btn-info" href="Parks/Details/' + detArray[i] + '" target="_blank"> Details</a></center>');
+                                    infowindow.setContent('<h5> ' + parkArray[i] + ' </h3>' + '<center><a class="btn btn-info" href="Parks/Details/' + detArray[i] + '" target="_blank"> Details</a></center>' + '<br/>' + '<center><a class="btn btn-info" href="' + linkArray[i] + '" target="_blank">Click for Directions</a></center>');
                                     infowindow.open(resultsMap, marker);
                                 });
                             })(marker, i);
@@ -173,65 +179,66 @@
             @foreach (var item in Model)
             {
                 <div class="col-md-4 parkdiv">
-                    <div class="row">
-                        <div class="col-md-2"></div>
-                        <div class="col-md-8">
-                            <h4 id="parkName">
-                                @Html.DisplayFor(modelItem => item.ParkName)
-                            </h4>
-
-                            <p> @Html.DisplayFor(modelItem => item.Address)</p>
+                    <div class="thumbnail">
+                        <div class="row">
+                            <div class="col-md-2"></div>
+                            <div class="col-md-8">
+                                <h4 id="parkName">
+                                    @Html.DisplayFor(modelItem => item.ParkName)
+                                </h4>
+                                <center><button class="btn btn-info" id="photoAdd"> @Html.ActionLink("Details", "Details", new { id = item.ParkID }, new { target = "_blank" })</button></center>
+                                <p> @Html.DisplayFor(modelItem => item.Address)</p>
+                            </div>
+                            <div class="col-md-2"></div>
                         </div>
-                        <div class="col-md-2"></div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-1"></div>
-                        <div class="col-md-5">
-                            <h4>
-                                @Html.DisplayNameFor(model => model.Restrooms)
-                            </h4>
-                            <p>  @Html.DisplayFor(modelItem => item.Restrooms)</p>
+                        <div class="row">
+                            <div class="col-md-1"></div>
+                            <div class="col-md-5">
+                                <h4>
+                                    @Html.DisplayNameFor(model => model.Restrooms)
+                                </h4>
+                                <p>  @Html.DisplayFor(modelItem => item.Restrooms)</p>
 
 
-                            <h4>
-                                Picnic Area
-                            </h4>
-                            <p>  @Html.DisplayFor(modelItem => item.PicnicArea)</p>
+                                <h4>
+                                    Picnic Area
+                                </h4>
+                                <p>  @Html.DisplayFor(modelItem => item.PicnicArea)</p>
 
-                            <h4>
-                                @Html.DisplayNameFor(model => model.Grill)
-                            </h4>
-                            <p> @Html.DisplayFor(modelItem => item.Grill)</p>
+                                <h4>
+                                    @Html.DisplayNameFor(model => model.Grill)
+                                </h4>
+                                <p> @Html.DisplayFor(modelItem => item.Grill)</p>
 
-                            <h4>
-                                @Html.DisplayNameFor(model => model.Playground)
-                            </h4>
-                            <p>  @Html.DisplayFor(modelItem => item.Playground)</p>
+                                <h4>
+                                    @Html.DisplayNameFor(model => model.Playground)
+                                </h4>
+                                <p>  @Html.DisplayFor(modelItem => item.Playground)</p>
 
+                            </div>
+                            <div class="col-md-5">
+                                <h4>
+                                    Hiking Trail
+                                </h4>
+                                <p>  @Html.DisplayFor(modelItem => item.HikingTrail)</p>
+
+                                <h4>
+                                    Paved Trail
+                                </h4>
+                                <p>  @Html.DisplayFor(modelItem => item.PavedTrail)</p>
+
+                                <h4>
+                                    @Html.DisplayNameFor(model => model.Fishing)
+                                </h4>
+                                <p>  @Html.DisplayFor(modelItem => item.Fishing)</p>
+                                <h4>
+                                    ADA Accessible
+                                </h4>
+                                <p>  @Html.DisplayFor(modelItem => item.ADAAccessible)</p>
+
+                            </div>
+                            <div class="col-md-1"></div>
                         </div>
-                        <div class="col-md-5">
-                            <h4>
-                                Hiking Trail
-                            </h4>
-                            <p>  @Html.DisplayFor(modelItem => item.HikingTrail)</p>
-
-                            <h4>
-                                Paved Trail
-                            </h4>
-                            <p>  @Html.DisplayFor(modelItem => item.PavedTrail)</p>
-
-                            <h4>
-                                @Html.DisplayNameFor(model => model.Fishing)
-                            </h4>
-                            <p>  @Html.DisplayFor(modelItem => item.Fishing)</p>
-                            <h4>
-                                ADA Accessible
-                            </h4>
-                            <p>  @Html.DisplayFor(modelItem => item.ADAAccessible)</p>
-
-                        </div>
-                        <div class="col-md-1"></div>
-
                     </div>
                 </div>
             }

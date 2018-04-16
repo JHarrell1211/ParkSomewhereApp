@@ -31,8 +31,10 @@
             @Html.LabelFor(model => model.ReviewComments, "Comments", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @*<label for="exampleInputText">Your Message</label>
-                <textarea class="form-control" placeholder="Description"></textarea>*@
-                @Html.EditorFor(model => model.ReviewComments, new { htmlAttributes = new { @class = "form-control" } })
+        <textarea class="form-control" placeholder="Description"></textarea>*@
+                @*<label for="exampleInputText">Your Message</label>*@
+                <textarea class="form-control"  @Html.EditorFor(model => model.ReviewComments)></textarea>
+                @*@Html.EditorFor(model => model.ReviewComments, new { htmlAttributes = new { @class = "form-control" } })*@
                 @Html.ValidationMessageFor(model => model.ReviewComments, "", new { @class = "text-danger" })
             </div>
         </div>

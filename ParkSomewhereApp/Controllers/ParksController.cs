@@ -68,7 +68,7 @@ namespace ParkSomewhereApp.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ParkID,ParkName,Address,Latitude,Longitude,OpenTime,CloseTime,Descripton,Photo,AvgRating,NumberRatings,Restrooms,PicnicArea,Grill,Playground,HikingTrail,PavedTrail,BasketballCourt,BaseballDiamond,CampGround,Fishing,Swimming,FitnessTrail,ADAAccessible")] Park park)
+        public ActionResult Create([Bind(Include = "ParkID,ParkName,Address,Latitude,Longitude,OpenTime,CloseTime,Descripton,Photo,AvgRating,NumberRatings,Restrooms,PicnicArea,Grill,Playground,HikingTrail,PavedTrail,BasketballCourt,BaseballDiamond,CampGround,Fishing,Swimming,FitnessTrail,ADAAccessible, GoogleMap")] Park park)
         {
             if (ModelState.IsValid)
             {
@@ -100,7 +100,7 @@ namespace ParkSomewhereApp.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ParkID,ParkName,Address,Latitude,Longitude,OpenTime,CloseTime,Descripton,Photo,AvgRating,NumberRatings,Restrooms,PicnicArea,Grill,Playground,HikingTrail,PavedTrail,BasketballCourt,BaseballDiamond,CampGround,Fishing,Swimming,FitnessTrail,ADAAccessible")] Park park)
+        public ActionResult Edit([Bind(Include = "ParkID,ParkName,Address,Latitude,Longitude,OpenTime,CloseTime,Descripton,Photo,AvgRating,NumberRatings,Restrooms,PicnicArea,Grill,Playground,HikingTrail,PavedTrail,BasketballCourt,BaseballDiamond,CampGround,Fishing,Swimming,FitnessTrail,ADAAccessible, GoogleMap")] Park park)
         {
             if (ModelState.IsValid)
             {

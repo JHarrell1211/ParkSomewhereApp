@@ -6,6 +6,9 @@
 }
 
 
+a {
+    color: white;
+}
 
 #weather {
     margin-left: 1vw;
@@ -64,6 +67,7 @@ h4 {
 h3#header {
     margin-top: 10vh;
     text-align: center;
+    font-size:3rem;
 }
 
 
@@ -83,7 +87,14 @@ div.parkdiv {
     margin-top: 3vh;
     border-width: 3px;
     height: 65vh;
-    background: rgba(255, 255, 255, 0.7);
-  
     
+    /*margin-left: 5px;
+    margin-right: 5px;*/
+    padding: 10px;
+}
+
+.thumbnail {
+    background: rgba(255, 255, 255, 0.7);
+    height: auto;
+  
 }

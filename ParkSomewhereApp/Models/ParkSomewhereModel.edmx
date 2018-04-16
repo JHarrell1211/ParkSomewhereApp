@@ -94,6 +94,7 @@
           <Property Name="Swimming" Type="bit" Nullable="false" />
           <Property Name="FitnessTrail" Type="bit" Nullable="false" />
           <Property Name="ADAAccessible" Type="bit" Nullable="false" />
+          <Property Name="GoogleMap" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="Photo">
           <Key>
@@ -116,16 +117,6 @@
           <Property Name="Rating" Type="int" />
           <Property Name="TotalVotes" Type="int" />
           <Property Name="UserID" Type="nvarchar" MaxLength="128" />
-        </EntityType>
-        <EntityType Name="sysdiagrams">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="principal_id" Type="int" Nullable="false" />
-          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="version" Type="int" />
-          <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
         <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
           <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
@@ -241,7 +232,6 @@
           <EntitySet Name="Park" EntityType="Self.Park" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Photo" EntityType="Self.Photo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Review" EntityType="Self.Review" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
@@ -309,6 +299,7 @@
           <Property Name="ADAAccessible" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="Photos" Relationship="Self.FK_Photo_Park" FromRole="Park" ToRole="Photo" />
           <NavigationProperty Name="Reviews" Relationship="Self.FK_Review_Park" FromRole="Park" ToRole="Review" />
+          <Property Name="GoogleMap" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Photo">
           <Key>
@@ -377,7 +368,6 @@
           <EntitySet Name="AspNetUserClaims" EntityType="ParkSomewhereAppModel.AspNetUserClaim" />
           <EntitySet Name="AspNetUserLogins" EntityType="ParkSomewhereAppModel.AspNetUserLogin" />
           <EntitySet Name="AspNetUsers" EntityType="ParkSomewhereAppModel.AspNetUser" />
-          <EntitySet Name="sysdiagrams" EntityType="ParkSomewhereAppModel.sysdiagram" />
           <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="ParkSomewhereAppModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
             <End Role="AspNetUser" EntitySet="AspNetUsers" />
             <End Role="AspNetUserClaim" EntitySet="AspNetUserClaims" />
@@ -460,16 +450,6 @@
           <NavigationProperty Name="Photos" Relationship="ParkSomewhereAppModel.FK_Photo_AspNetUsers" FromRole="AspNetUser" ToRole="Photo" />
           <NavigationProperty Name="Reviews" Relationship="ParkSomewhereAppModel.FK_Review_AspNetUsers" FromRole="AspNetUser" ToRole="Review" />
         </EntityType>
-        <EntityType Name="sysdiagram">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="principal_id" Type="Int32" Nullable="false" />
-          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="version" Type="Int32" />
-          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
-        </EntityType>
         <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
           <End Type="ParkSomewhereAppModel.AspNetUser" Role="AspNetUser" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -535,6 +515,7 @@
           <EntitySetMapping Name="Parks">
             <EntityTypeMapping TypeName="ParkSomewhereAppModel.Park">
               <MappingFragment StoreEntitySet="Park">
+                <ScalarProperty Name="GoogleMap" ColumnName="GoogleMap" />
                 <ScalarProperty Name="ParkID" ColumnName="ParkID" />
                 <ScalarProperty Name="ParkName" ColumnName="ParkName" />
                 <ScalarProperty Name="Address" ColumnName="Address" />
@@ -638,17 +619,6 @@
                 <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="ParkSomewhereAppModel.sysdiagram">
-              <MappingFragment StoreEntitySet="sysdiagrams">
-                <ScalarProperty Name="definition" ColumnName="definition" />
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-                <ScalarProperty Name="name" ColumnName="name" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
