@@ -29,13 +29,7 @@ namespace ParkSomewhereApp.Controllers
             return View(photos.ToList());
         }
 
-        [HttpPost]
-        public ActionResult Index(int ParkID)
-        {
-            ViewBag.ParkID = new SelectList(db.Parks, "ParkID", "ParkName");
-            var photos = db.Photos.Include(r => r.Park).Include(r => r.AspNetUser).Where(r => r.ParkID == ParkID).OrderByDescending(r => r.PhotoID);
-           return View(photos.ToList());
-        }
+        
 
 
         // GET: Photos

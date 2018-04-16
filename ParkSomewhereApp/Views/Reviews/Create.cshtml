@@ -1,11 +1,11 @@
 ﻿@model ParkSomewhereApp.Models.Review
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Add New Review";
 }
 
 <h2>Create</h2>
-
+<link href="~/Content/CreateReviewStyle.css" rel="stylesheet" />
 
 @using (Html.BeginForm()) 
 {
@@ -34,7 +34,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.ReviewComments, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.ReviewComments, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.TextBoxFor(model => model.ReviewComments, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.ReviewComments, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -77,7 +77,7 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="Create" class="btn btn-success" />
             </div>
         </div>
     </div>
