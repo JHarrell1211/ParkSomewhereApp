@@ -4,8 +4,8 @@
     ViewBag.Title = "Log in";
 }
 <h2>@ViewBag.Title.</h2>
-<link href="~/Content/LoginStyle.css" rel="stylesheet" />
-<link href="~/Content/LoginStyle2.css" rel="stylesheet" />
+<link href="~/Content/jovonStyle1.css" rel="stylesheet" />
+<link href="~/Content/jovonStyle2.css" rel="stylesheet" />
 @*<div class="row">
     <div class="col-md-8">
         <section id="loginForm">
@@ -58,30 +58,24 @@
             </section>
         </div>
     </div>*@
-
 <div class="body"></div>
 <div class="grad"></div>
 @*<div class="header">
-    <div>Park<span>Somewhere</span></div>
-</div>*@
+        <div>Park<span>Somewhere</span></div>
+    </div>*@
 <br>
-
-
-
 <div class="row">
     <div class="col-md-8">
         <section id="loginForm">
             @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
             {
                 @Html.AntiForgeryToken()
-                <h1>Use a local account to log in</h1>
+                <h1>Log In</h1>
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-
                 <p>
                     @Html.LabelFor(m => m.UserName, new { @class = "col-md-2 control-label" })
                     @Html.TextBoxFor(m => m.UserName, new { @class = "form-control" })
                     @Html.ValidationMessageFor(m => m.UserName, "", new { @class = "text-danger" })
-
                 </p>
                 <p>
                     @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
@@ -92,12 +86,10 @@
                     @Html.CheckBoxFor(m => m.RememberMe)
                     @Html.LabelFor(m => m.RememberMe)
                 </p>
-
                 <p class="p-container">
                     @*<span>Forgot password ?</span>*@
                     @Html.ActionLink("Register as a new user", "Register")
                     <input type="submit" value="Log in" class="btn btn-default" />
-
                 </p>
             }
             @using (Html.BeginForm("ExternalLogin", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
@@ -110,11 +102,10 @@
                     @*</section>*@
                 </div>
             }
-            
+
         </section>
     </div>
 </div>
-
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }

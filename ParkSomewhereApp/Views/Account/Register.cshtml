@@ -1,11 +1,13 @@
-﻿@model ParkSomewhereApp.Models.RegisterViewModel
+﻿
+
+
+@model ParkSomewhereApp.Models.RegisterViewModel
 @{
     ViewBag.Title = "Register";
 }
-
 <h2>@ViewBag.Title.</h2>
-<link href="~/Content/LoginStyle.css" rel="stylesheet" />
-<link href="~/Content/LoginStyle2.css" rel="stylesheet" />
+<link href="~/Content/jovonStyle1.css" rel="stylesheet" />
+<link href="~/Content/jovonStyle2.css" rel="stylesheet" />
 @*@using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
     {
         @Html.AntiForgeryToken()
@@ -40,7 +42,6 @@
         <div class="form-group" style="display:none">
             @Html.Label("user Role", new { @class = "col-md-2 control-label" })
             <div class="col-md-10">
-
                 @Html.DropDownList("UserRoles", (SelectList)ViewBag.Name)
             </div>
         </div>
@@ -51,59 +52,47 @@
         </div>
     }*@
 
+
+
 <div class="body"></div>
 <div class="grad"></div>
 <br>
-
 <div class="row">
     <div class="col-md-8">
         <section id="loginForm">
             @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-    {
-        @Html.AntiForgeryToken()
-        <h1>Create a new account</h1>
-        @Html.ValidationSummary("", new { @class = "text-danger" })
-
-        <p>
-            @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
-            @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
-
-
-        </p>
-        <p>
-            @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
-            @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
-
-        </p>
-        <p>
-            @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-2 control-label" })
-            @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
-        </p>
-        <p>
-            @Html.LabelFor(m => m.UserName, new { @class = "col-md-2 control-label" })
-            @Html.TextBoxFor(m => m.UserName, new { @class = "form-control" })
-        </p>
-
-        @*<p>
-            @Html.Label("user Role", new { @class = "col-md-2 control-label" })
-            @Html.DropDownList("UserRoles", (SelectList)ViewBag.Name)
-        </p>*@
-
-        <p class="p-container">
-            @*<span>Forgot password ?</span>*@
-
-            <input type="submit" class="btn btn-default" value="Register" />
-
-        </p>
-}
-
-
+            {
+                @Html.AntiForgeryToken()
+                <h1>Create a new account</h1>
+                @Html.ValidationSummary("", new { @class = "text-danger" })
+                <p>
+                    @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
+                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                </p>
+                <p>
+                    @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
+                    @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                </p>
+                <p>
+                    @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-2 control-label" })
+                    @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
+                </p>
+                <p>
+                    @Html.LabelFor(m => m.UserName, new { @class = "col-md-2 control-label" })
+                    @Html.TextBoxFor(m => m.UserName, new { @class = "form-control" })
+                </p>
+                @*<p>
+                        @Html.Label("user Role", new { @class = "col-md-2 control-label" })
+                        @Html.DropDownList("UserRoles", (SelectList)ViewBag.Name)
+                    </p>*@
+                <p class="p-container">
+                    @*<span>Forgot password ?</span>*@
+                    <input type="submit" class="btn btn-default" value="Register" />
+                </p>
+            }
         </section>
     </div>
-
 </div>
-
-
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }

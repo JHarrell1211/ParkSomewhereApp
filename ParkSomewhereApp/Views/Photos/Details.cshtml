@@ -1,0 +1,29 @@
+﻿@model ParkSomewhereApp.Models.Photo
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<link href="https://fonts.googleapis.com/css?family=Acme|Montserrat" rel="stylesheet">
+<link href="~/Content/PhotoIndexStyleSheet.css" rel="stylesheet" />
+
+
+<body class="details-page">
+
+
+        <div class="container">
+            <div class="row details-row">
+                <div class="col-sm-2 details-info">
+                    <h4>Photo By:</h4> @Html.DisplayFor(model => model.AspNetUser.UserName) <br />
+                    <p></p>
+                    <h4> Park:</h4> @Html.DisplayFor(model => model.Park.ParkName)
+</div>
+                <div class="col-sm-10 photo-details">
+                    <img class="detail-image" src="@Url.Content(Model.Image)" />
+                </div>
+            </div>
+        </div>
+        <div class="row empty-row"> </div>
+
+
+</body>

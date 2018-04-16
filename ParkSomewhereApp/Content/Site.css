@@ -55,3 +55,43 @@ textarea {
 
 
 
+/*nav bar styling*/
+.navbar-inverse {
+    background-color: #135e46 !important;
+    border-color: #135e46 !important;
+}
+
+a.navbar-brand {
+    color: #a5db98 !important;
+    font-family: 'Acme', sans-serif;
+    /*font-family: 'Permanent Marker', cursive;*/
+    font-size: 3rem;
+    /*text-shadow: 1px 1px #7ec777;*/
+}
+
+    a.navbar-brand:hover {
+        color: #4db85f !important;
+        /*text-shadow: 1px 1px lightgreen;*/
+        /*background-color: #247e61 !important;*/
+    }
+
+
+.navbar-inverse .navbar-nav > li > a {
+    margin-left: 5vw;
+    color: #a5db98 !important;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+}
+
+    .navbar-inverse .navbar-nav > li > a:hover {
+        color: #135e46 !important;
+        background-color: #a5db98;
+        border-color: #a5db98 !important;
+    }
+
+footer {
+    font-family: 'Montserrat', sans-serif;
+    color: #135e46;
+    text-align:center;
+    font-weight:bold;
+}

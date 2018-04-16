@@ -1,0 +1,89 @@
+﻿body {
+    /*background-image: url('images/parksbg.jpg');*/
+    background-image: url('images/bg4.jpg');
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+
+
+#weather {
+    margin-left: 1vw;
+}
+
+#map {
+    height: 70vh;
+    margin-top: 3vh;
+    /*border: 3px solid #135e46;*/
+    width: 100%;
+    margin-right: 30vh;
+}
+
+#floating-panel {
+    /*position: absolute;
+    top: 20vh;
+    left: 80%;
+    z-index: 5;*/
+    /*margin-top:10vh;*/
+    justify-content: center;
+    background-color: #fff;
+    margin-top: 3vh;
+    padding: 3px;
+    border: 2px solid #135e46;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    line-height: 25px;
+}
+
+h3 {
+    font-family: 'Acme', sans-serif;
+    color: #135e46;
+    margin-left: 5vw;
+    font-size: 2.5rem;
+    margin-top: 5vh;
+}
+h5 {
+    font-family: 'Acme', sans-serif;
+    color: #135e46;
+    font-size: 2.5rem;
+}
+
+h4 {
+    font-family: 'Acme', sans-serif;
+    font-size: 1.5rem;
+    color: #135e46;
+}
+
+    h4#parkName {
+        font-family: 'Acme', sans-serif;
+        font-size: 2rem;
+        color: #135e46;
+        text-align: center;
+    }
+
+h3#header {
+    margin-top: 10vh;
+    text-align: center;
+}
+
+
+p {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.5rem;
+    color: #135e46;
+}
+
+    p#desp {
+        justify-content: space-between;
+    }
+
+div.parkdiv {
+    /*border: solid;
+    border-color: white;*/
+    margin-top: 3vh;
+    border-width: 3px;
+    height: 65vh;
+    background: rgba(255, 255, 255, 0.7);
+  
+    
+}

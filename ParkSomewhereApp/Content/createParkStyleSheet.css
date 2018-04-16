@@ -1,0 +1,33 @@
+﻿body {
+    display: block;
+    position: relative;
+    color: #135e46 !important;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+}
+
+    body::after {
+        content: "";
+          
+          /*background-image: url('images/agriculture-apple-blur-257840.jpg');*/
+        background-image: url('images/accomplishment-adult-adventure-372098.jpg');
+     background-size: cover;
+     background-attachment: fixed;
+     top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        position: absolute;
+        z-index: -1;
+        opacity: .7;
+    }
+
+h4 {
+    text-align: center;
+    color: #135e46 !important;
+    font-family: 'Acme', sans-serif;
+    font-size:3rem;
+}
+.checkbox{
+    margin-left: 120px;
+}
